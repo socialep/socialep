@@ -1,19 +1,60 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, SafeAreaView, StatusBar } from "react-native";
+import { BreadProvider } from "material-bread";
 
-export default function App() {
+//REDUX
+import { Provider } from "react-redux";
+import Store from "./redux/store";
+import { setStrings } from "./redux/actions/uiActions";
+
+//UTILS
+import isIPhoneX from "./utils/isIPhoneX";
+import strings from "./utils/strings";
+
+//COLORS
+import { colorPrimary } from "./utils/colors";
+
+//NAVIGATORS
+import { NavigationContainer } from "@react-navigation/native";
+import CarouselNavigator from "./navigators/CarouselNavigator";
+
+Store.dispatch(setStrings(strings("pt-br")));
+
+const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
+
+const App = () => {
+  if (isIPhoneX())
+    return (
+      <Provider store={Store}>
+        <StatusBar barStyle="light-content" />
+        <SafeAreaView style={{ flex: 0, backgroundColor: colorPrimary }} />
+        <SafeAreaView style={{ flex: 1, backgroundColor: colorPrimary }}>
+          <NavigationContainer>
+            <BreadProvider>
+              <CarouselNavigator />
+            </BreadProvider>
+          </NavigationContainer>
+        </SafeAreaView>
+      </Provider>
+    );
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={Store}>
+      <View
+        style={{ backgroundColor: colorPrimary, height: STATUS_BAR_HEIGHT }}
+      >
+        <StatusBar
+          translucent={false}
+          barStyle="default"
+          backgroundColor={colorPrimary}
+        />
+      </View>
+      <NavigationContainer>
+        <BreadProvider>
+          <CarouselNavigator />
+        </BreadProvider>
+      </NavigationContainer>
+    </Provider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
