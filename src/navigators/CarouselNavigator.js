@@ -2,9 +2,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //Screens
-import carousel1 from "../screens/carousel1";
-import carousel2 from "../screens/carousel2";
-import carousel3 from "../screens/carousel3";
+import carousel1 from "../screens/carousel/carousel1";
+import carousel2 from "../screens/carousel/carousel2";
+import carousel3 from "../screens/carousel/carousel3";
 
 const CarouselStack = createStackNavigator();
 
