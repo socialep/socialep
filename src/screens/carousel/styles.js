@@ -1,13 +1,21 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { colorPrimary } from "../../utils/colors";
+import { fontColor, colorCarousel } from "../../utils/colors";
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  image: {
+  imageView: {
     flex: 2,
-    width: Dimensions.get("window").width
+    width: Dimensions.get("window").width,
+    backgroundColor: colorCarousel,
+    padding: 60,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  image: {
+    height: "70%",
+    width: "70%"
   },
   contentView: {
     flex: 2,
@@ -15,9 +23,14 @@ export default styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
+  lblTittle: {
+    fontSize: 20,
+    color: fontColor,
+    fontWeight: "600"
+  },
   text: {
-    fontSize: 18,
-    fontColor: colorPrimary
+    fontSize: 16,
+    color: fontColor
   },
   btnNext: {
     position: "absolute",
