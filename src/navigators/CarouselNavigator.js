@@ -6,6 +6,9 @@ import carousel1 from "../screens/carousel/carousel1";
 import carousel2 from "../screens/carousel/carousel2";
 import carousel3 from "../screens/carousel/carousel3";
 
+//config
+import defaultScreenOpts from '../config/defaultScreenOpts'
+
 const CarouselStack = createStackNavigator();
 
 const CarouselNavigator = () => {
@@ -14,17 +17,17 @@ const CarouselNavigator = () => {
       <CarouselStack.Screen
         name="carousel1"
         component={carousel1}
-        options={defaultScreenOptions}
+        options={defaultScreenOpts}
       />
       <CarouselStack.Screen
         name="carousel2"
         component={carousel2}
-        options={defaultScreenOptions}
+        options={defaultScreenOpts}
       />
       <CarouselStack.Screen
         name="carousel3"
         component={carousel3}
-        options={defaultScreenOptions}
+        options={defaultScreenOpts}
       />
     </CarouselStack.Navigator>
   );
