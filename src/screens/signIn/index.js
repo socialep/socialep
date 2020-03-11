@@ -1,19 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 
-export default function App() {
+//Material Bread
+import { Button } from "material-bread";
+
+//UTIL
+import styles from "./styles";
+
+//REDUX
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+const index = props => {
   return (
     <View style={styles.container}>
-      <Text>signIn</Text>
+      <View style={styles.header} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+const mapStateToProps = state => ({
+  ui: state.ui
 });
+
+const mapDispatchToProps = {};
+
+index.propTypes = {
+  ui: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
