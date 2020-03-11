@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {};
 
-index.propTypes = {
+carousel3.propTypes = {
   ui: PropTypes.object.isRequired
 };
 
