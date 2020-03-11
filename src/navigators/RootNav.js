@@ -18,7 +18,7 @@ import { getUserFromCache } from "../redux/actions/userActions";
 const RootStack = createStackNavigator();
 
 const RootNav = props => {
-  const [firstTime, setFirstTime] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
   const [loading, setLoading] = useState(false);
   const [logged, setLogged] = useState(false);
 
