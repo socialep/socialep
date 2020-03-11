@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ProgressCircle } from "material-bread";
-import { colorPrimary } from "../util/colors";
+import { colorPrimary } from "../utils/colors";
 
 const styles = StyleSheet.create({
   loadingContent: {
