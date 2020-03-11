@@ -11,7 +11,7 @@ import defaultScreenOpts from '../config/defaultScreenOpts'
 
 const CarouselStack = createStackNavigator();
 
-const CarouselNavigator = () => {
+const CarouselNav = () => {
   return (
     <CarouselStack.Navigator headerMode="none">
       <CarouselStack.Screen
@@ -33,4 +33,4 @@ const CarouselNavigator = () => {
   );
 };
 
-export default CarouselNavigator;
+export default CarouselNav;

@@ -16,7 +16,7 @@ import { colorPrimary } from "./utils/colors";
 
 //NAVIGATORS
 import { NavigationContainer } from "@react-navigation/native";
-import CarouselNavigator from "./navigators/CarouselNavigator";
+import RootNav from "./navigators/RootNav";
 
 Store.dispatch(setStrings(strings("pt-br")));
 
@@ -31,7 +31,7 @@ const App = () => {
         <SafeAreaView style={{ flex: 1, backgroundColor: colorPrimary }}>
           <NavigationContainer>
             <BreadProvider>
-              <CarouselNavigator />
+              <RootNav />
             </BreadProvider>
           </NavigationContainer>
         </SafeAreaView>
@@ -50,7 +50,7 @@ const App = () => {
       </View>
       <NavigationContainer>
         <BreadProvider>
-          <CarouselNavigator />
+          <RootNav />
         </BreadProvider>
       </NavigationContainer>
     </Provider>

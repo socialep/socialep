@@ -11,7 +11,7 @@ import { colorPrimary } from "../../utils/colors";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const carousel3 = ({ ui: { strings }, navigation }) => {
+const carousel3 = ({ ui: { strings } }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageView}>
