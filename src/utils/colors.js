@@ -7,3 +7,7 @@ export const colorSignInHeader = "#404040";
 //fonts
 export const fontColor = "#707070";
 export const fontColorLight = "#9A9A9A";
+
+//buttons
+export const colorSignInGoogle = "#FF6E6E"
+export const colorSignInFacebook = "#6C63FF"

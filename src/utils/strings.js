@@ -11,7 +11,11 @@ export default strings = language => {
         next: "Próximo",
         youReady:
           "Você está pronto para transformar o mundo em um lugar melhor?",
-        begin: "Começar"
+        begin: "Começar",
+        signIn: "ENTRAR",
+        signInGoogle: "Conectar com Google",
+        signInFacebook: "Conectar com Facebook",
+        useAndPrivacy: "Uso e Privacidade"
       };
   }
 };
