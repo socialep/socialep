@@ -15,7 +15,7 @@
     "expo": "^36.0.0",
     "expo-image-picker": "~8.0.1",
     "expo-location": "~8.0.0",
-    "material-bread": "^0.2.5",
+    "material-bread": "^0.2.6",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
@@ -30,8 +30,8 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "~8.0.0",
-    "@babel/core": "^7.0.0"
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0"
   },
   "private": true
 }
