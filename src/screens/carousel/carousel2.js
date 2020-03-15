@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Button } from "material-bread";
 
 //UTIL
@@ -21,7 +21,7 @@ const carusel2 = ({ ui: { strings }, navigation }) => {
         <Text style={styles.lblTittle}>{strings.beAHero}</Text>
         <Text style={styles.text}>{strings.findInst}</Text>
         <Button
-          style={styles.btnNext}
+          containerStyle={styles.btnNext}
           text={strings.next}
           type="contained"
           color={colorPrimary}

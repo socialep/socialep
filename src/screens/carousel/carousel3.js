@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Button } from "material-bread";
 
 //UTIL
@@ -20,7 +20,7 @@ const carousel3 = ({ ui: { strings } }) => {
       <View style={styles.contentView}>
         <Text style={styles.text}>{strings.youReady}</Text>
         <Button
-          style={styles.btnNext}
+          containerStyle={styles.btnNext}
           text={strings.begin}
           type="contained"
           color={colorPrimary}

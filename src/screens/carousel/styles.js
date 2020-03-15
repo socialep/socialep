@@ -20,21 +20,21 @@ export default styles = StyleSheet.create({
   contentView: {
     flex: 2,
     padding: 20,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "space-around"
   },
   lblTittle: {
     fontSize: 20,
     color: fontColor,
-    fontWeight: "600"
+    fontWeight: "600",
+    alignSelf: "center"
   },
   text: {
     fontSize: 16,
-    color: fontColor
+    color: fontColor,
+    alignSelf: "center",
+    marginHorizontal: 20
   },
   btnNext: {
-    position: "absolute",
-    bottom: 20,
-    right: 20
+    alignSelf: "flex-end"
   }
 });
