@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 import MainNav from "./MainNav";
 import SignInNav from "./SignInNav";
 import CarouselNav from "./CarouselNav";
+import selectInterests from "../screens/selectInterests";
 
 //redux
 import PropTypes from "prop-types";
@@ -20,7 +21,8 @@ const RootStack = createStackNavigator();
 const RootNav = props => {
   const [firstTime, setFirstTime] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
+  const [interests, setInterests] = useState(false);
 
   return (
     <>
@@ -30,9 +32,16 @@ const RootNav = props => {
         <RootStack.Navigator headerMode="none">
           <RootStack.Screen name="CarouselNav" component={CarouselNav} />
         </RootStack.Navigator>
-      ) : logged ? (
+      ) : logged && interests ? (
         <RootStack.Navigator headerMode="none">
           <RootStack.Screen name="MainNav" component={MainNav} />
+        </RootStack.Navigator>
+      ) : logged && !interests ? (
+        <RootStack.Navigator headerMode="none">
+          <RootStack.Screen
+            name="selectInterests"
+            component={selectInterests}
+          />
         </RootStack.Navigator>
       ) : (
         <RootStack.Navigator headerMode="none">
