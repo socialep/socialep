@@ -32,11 +32,12 @@ export default styles = StyleSheet.create({
     marginVertical: 40,
     color: fontColor
   },
-  btnSignIn:{
-    marginTop: 20
+  btnSignIn: {
+    marginTop: 20,
+    width: Dimensions.get("window").width / 1.5
   },
-  btnPrivacy:{
-    position: 'absolute',
+  btnPrivacy: {
+    position: "absolute",
     bottom: 20
   }
 });

@@ -41,14 +41,13 @@ const index = props => {
         />
         <Text style={styles.lblSignIn}>{strings.signIn}</Text>
         <Button
-          fullWidth
+          containerStyle={styles.btnSignIn}
           type="contained"
           text={strings.signInFacebook}
           color={colorSignInFacebook}
         />
         <Button
           containerStyle={styles.btnSignIn}
-          fullWidth
           type="contained"
           text={strings.signInGoogle}
           color={colorSignInGoogle}
