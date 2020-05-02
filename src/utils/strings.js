@@ -1,4 +1,4 @@
-export default strings = language => {
+export default strings = (language) => {
   switch (language) {
     default:
       return {
@@ -27,7 +27,14 @@ export default strings = language => {
         //
         continue: "Continuar",
         //
-        mustChooseAtLeastOne: "Você precisa escolher ao menos um interesse"
+        mustChooseAtLeastOne: "Você precisa escolher ao menos um interesse",
+        //
+        wantToSubscribe: "Quero me inscrever",
+        //
+        home: "Home",
+        feed: "Feed",
+        myAccount: "Meu Perfil",
+        favorites: "Favoritos",
       };
   }
 };
