@@ -1,4 +1,5 @@
 export const colorPrimary = "#6C63FF";
+export const colorPrimaryDarker = "#5650CC";
 
 //backgrounds
 export const colorCarousel = "#CBCBCB";
@@ -18,3 +19,6 @@ export const colorSignInFacebook = "#6C63FF";
 //icons
 export const colorSelected = "#12B2A0";
 export const colorUnselected = "#B4B4B4";
+export const colorStar = "#F37A10";
+export const colorFavorite = "#FF6E6E";
+export const colorFocused = "#727272";
