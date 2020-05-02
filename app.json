@@ -23,7 +23,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.socialEpoque.socialEp",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "<YOUR_REVERSED_IOS_CLIENT_ID>"
+        }
+      }
+    },
+    "android": {
+      "package": "com.socialEpoque.socialEp"
     }
   }
 }
