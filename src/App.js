@@ -12,23 +12,29 @@ import isIPhoneX from "./utils/isIPhoneX";
 import strings from "./utils/strings";
 
 //COLORS
-import { colorPrimary } from "./utils/colors";
+import { colorPrimaryDarker } from "./utils/colors";
 
 //NAVIGATORS
 import { NavigationContainer } from "@react-navigation/native";
 import RootNav from "./navigators/RootNav";
 
-Store.dispatch(setStrings(strings("pt-br")));
+//Fireabse
+import * as fireabse from "firebase";
+import fireabseConfig from "./config/firebaseConfig";
 
-const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
+fireabse.initializeApp(fireabseConfig);
+
+Store.dispatch(setStrings(strings("pt-br")));
 
 const App = () => {
   if (isIPhoneX())
     return (
       <Provider store={Store}>
         <StatusBar barStyle="light-content" />
-        <SafeAreaView style={{ flex: 0, backgroundColor: colorPrimary }} />
-        <SafeAreaView style={{ flex: 1, backgroundColor: colorPrimary }}>
+        <SafeAreaView
+          style={{ flex: 0, backgroundColor: colorPrimaryDarker }}
+        />
+        <SafeAreaView style={{ flex: 1, backgroundColor: colorPrimaryDarker }}>
           <NavigationContainer>
             <BreadProvider>
               <RootNav />
@@ -39,15 +45,11 @@ const App = () => {
     );
   return (
     <Provider store={Store}>
-      <View
-        style={{ backgroundColor: colorPrimary, height: STATUS_BAR_HEIGHT }}
-      >
-        <StatusBar
-          translucent={false}
-          barStyle="default"
-          backgroundColor={colorPrimary}
-        />
-      </View>
+      <StatusBar
+        translucent={false}
+        barStyle="default"
+        backgroundColor={colorPrimaryDarker}
+      />
       <NavigationContainer>
         <BreadProvider>
           <RootNav />

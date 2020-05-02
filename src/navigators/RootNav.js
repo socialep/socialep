@@ -14,15 +14,26 @@ import selectInterests from "../screens/selectInterests";
 //redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getUserFromCache } from "../redux/actions/userActions";
+import {} from "../redux/actions/userActions";
+
+//firebase
+import firebase from "firebase";
 
 const RootStack = createStackNavigator();
 
-const RootNav = props => {
+const RootNav = (props) => {
   const [firstTime, setFirstTime] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [logged, setLogged] = useState(true);
-  const [interests, setInterests] = useState(false);
+  const [logged, setLogged] = useState(false);
+  const [interests, setInterests] = useState(true);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) setLogged(true);
+      else setLogged(false);
+    });
+  }, []);
 
   return (
     <>
@@ -52,17 +63,14 @@ const RootNav = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state) => ({
+  user: state.user,
 });
 
-const mapDispatchToProps = {
-  getUserFromCache
-};
+const mapDispatchToProps = {};
 
 RootNav.propTypes = {
   user: PropTypes.object.isRequired,
-  getUserFromCache: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootNav);
