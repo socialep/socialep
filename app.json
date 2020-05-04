@@ -25,12 +25,14 @@
       "bundleIdentifier": "com.socialEpoque.socialEp",
       "config": {
         "googleSignIn": {
-          "reservedClientId": "<YOUR_REVERSED_IOS_CLIENT_ID>"
+          "reservedClientId": "com.googleusercontent.apps.266866452601-tf50lile57306ub9asv445pg6i6f1uke"
         }
-      }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "package": "com.socialEpoque.socialEp"
+      "package": "com.socialEpoque.socialEp",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

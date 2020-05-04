@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>266866452601-tf50lile57306ub9asv445pg6i6f1uke.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.266866452601-tf50lile57306ub9asv445pg6i6f1uke</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>266866452601-cf97cd69k7e6amv59bjgu899p9550lvh.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC6mCDDgHrbFqhHJbfjXy8hk-stbgj3c9c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>266866452601</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.socialEpoque.socialEp</string>
+	<key>PROJECT_ID</key>
+	<string>socialep-3bdd5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>socialep-3bdd5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:266866452601:ios:5e7daf0c7f6ec793bccca8</string>
+	<key>DATABASE_URL</key>
+	<string>https://socialep-3bdd5.firebaseio.com</string>
+</dict>
+</plist>

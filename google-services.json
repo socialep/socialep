@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "266866452601",
+    "firebase_url": "https://socialep-3bdd5.firebaseio.com",
+    "project_id": "socialep-3bdd5",
+    "storage_bucket": "socialep-3bdd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266866452601:android:84c13b30fd2f08c4bccca8",
+        "android_client_info": {
+          "package_name": "com.socialEpoque.socialEp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266866452601-cf97cd69k7e6amv59bjgu899p9550lvh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.socialEpoque.socialEp",
+            "certificate_hash": "67567dd1106a68806061adc37ad403a13535be53"
+          }
+        },
+        {
+          "client_id": "266866452601-netc5om1i30u7rdniqvijnp3opgamuea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8L3b8dzgwGSr_NENWyJByUdnmCgVxbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266866452601-netc5om1i30u7rdniqvijnp3opgamuea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266866452601:android:d92cf89829b45925",
+        "android_client_info": {
+          "package_name": "com.socialepoque.socialep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266866452601-5tunumt9ijfbm3ci83s19r5qvpj6b448.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.socialepoque.socialep",
+            "certificate_hash": "21f2e97c5d713d793998b9dae107993d07f07912"
+          }
+        },
+        {
+          "client_id": "266866452601-netc5om1i30u7rdniqvijnp3opgamuea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8L3b8dzgwGSr_NENWyJByUdnmCgVxbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266866452601-netc5om1i30u7rdniqvijnp3opgamuea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
