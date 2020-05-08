@@ -6,6 +6,7 @@ import styles from "./styles";
 import CustomAppBar from "../../components/CustomAppBar";
 import Loading from "../../components/Loading";
 import OpportunityCard from "../../components/OpportunityCard";
+import OpportunityListItem from "../../components/OpportunityListItem";
 
 //Redux
 import PropTypes from "prop-types";
@@ -15,37 +16,22 @@ import { connect } from "react-redux";
 
 const index = (props) => {
   const {
-    ui: { strings, loading },
+    ui: { strings, loading, opportunities },
+    navigation,
   } = props;
 
   const [mode, setMode] = useState("carrousel");
 
-  const opportunities = [
-    {
-      rating: 3.5,
-      photo:
-        "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
-      name: "Oportunidade de Teste",
-      description:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
-      liked: true,
-    },
-    {
-      rating: 3.5,
-      photo:
-        "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
-      name: "Oportunidade de Teste",
-      description:
-        "Oportunidade de Teste Oportunidade de Teste Oportunidade de Teste",
-      liked: true,
-    },
-  ];
-
   return (
     <View style={styles.container}>
       <CustomAppBar
-        actions={["view-carousel", "more-vert"]}
-        onSecondaryAction={() => console.log("onSecondaryAction")}
+        actions={[
+          mode === "carrousel" ? "view-carousel" : "view-agenda",
+          "more-vert",
+        ]}
+        onSecondaryAction={() =>
+          setMode(mode === "carrousel" ? "agenda" : "carrousel")
+        }
         onThirdAction={() => console.log("onThirdAction")}
         title={strings.home}
       />
@@ -53,13 +39,23 @@ const index = (props) => {
         <Loading />
       ) : (
         <ScrollView>
-          {opportunities.map((opp) => (
-            <OpportunityCard
-              opportunity={opp}
-              handleFavPressed={() => console.log("favorited")}
-              btnPressed={() => console.log("pressed")}
-            />
-          ))}
+          {mode === "carrousel"
+            ? opportunities.map((opp, index) => (
+                <OpportunityCard
+                  key={index}
+                  opportunity={opp}
+                  handleFavPressed={() => console.log("favorited")}
+                  btnPressed={() => navigation.push("Opportunity", { opp })}
+                />
+              ))
+            : opportunities.map((opp, index) => (
+                <OpportunityListItem
+                  key={index}
+                  opportunity={opp}
+                  handleFavPressed={() => console.log("favorited")}
+                  btnPressed={() => navigation.push("Opportunity", { opp })}
+                />
+              ))}
         </ScrollView>
       )}
     </View>

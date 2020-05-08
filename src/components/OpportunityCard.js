@@ -53,14 +53,18 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   btnSubscribe: {
-    marginVertical: 10,
+    marginVertical: 16,
+  },
+  btnSubscribeInside: {
+    width: Dimensions.get("window").width / 1.8,
+    borderRadius: 10,
   },
 });
 
 const OpportunityCard = (props) => {
   const {
     ui: { strings },
-    opportunity: { rating, photo, name, description },
+    opportunity: { rating, photos, name, description },
   } = props;
 
   const [liked, setLiked] = useState(props.opportunity.liked);
@@ -84,7 +88,7 @@ const OpportunityCard = (props) => {
           onPress={handleFavPressed}
         />
       </View>
-      <Image style={styles.image} source={{ uri: photo }} />
+      <Image style={styles.image} source={{ uri: photos[0] }} />
       <Text style={styles.lblName}>{name}</Text>
       <Text style={styles.lblDes}>{description}</Text>
       <Button
@@ -93,6 +97,7 @@ const OpportunityCard = (props) => {
         text={strings.wantToSubscribe}
         onPress={() => props.btnPressed()}
         containerStyle={styles.btnSubscribe}
+        style={styles.btnSubscribeInside}
       />
       <Divider />
     </View>
