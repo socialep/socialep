@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import defaultScreenOpts from "../config/defaultScreenOpts";
 
 //screens
+import opportunity from "../screens/opportunity";
 
 //navigators
 import TabNav from "./TabNav";
@@ -15,6 +16,11 @@ export default MainNav = () => {
       <MainStack.Screen
         name="TabNav"
         component={TabNav}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="Opportunity"
+        component={opportunity}
         options={defaultScreenOpts}
       />
     </MainStack.Navigator>

@@ -17,6 +17,7 @@ export default strings = (language) => {
         signInFacebook: "Conectar com Facebook",
         useAndPrivacy: "Uso e Privacidade",
         //
+        interests: "Interesses",
         environment: "Meio Ambiente",
         education: "Educação",
         sports: "Esportes",
@@ -35,6 +36,11 @@ export default strings = (language) => {
         feed: "Feed",
         myAccount: "Meu Perfil",
         favorites: "Favoritos",
+        //
+        requirements: "Requisitos",
+        periodAndDuration: "Período e Duração",
+        socialProject: "Projeto Social",
+        knowMore: "Saiba Mais",
       };
   }
 };
