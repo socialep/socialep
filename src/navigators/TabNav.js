@@ -17,8 +17,6 @@ import {
 const Tab = createBottomTabNavigator();
 
 export default TabNav = (props) => {
-  const { navigation } = props;
-
   const tabOptions = {
     style: {
       backgroundColor: colorLightGrayBg,
