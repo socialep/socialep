@@ -28,7 +28,7 @@ const CustomAppBar = (props) => {
   return (
     <Appbar color={colorLightGrayBg} elevation={10}>
       {mode && (
-        <Icon
+        <IconButton
           name={mode}
           color={colorUnselected}
           size={32}
@@ -37,15 +37,18 @@ const CustomAppBar = (props) => {
       )}
       <Text style={styles.lblTitle}>{title}</Text>
       <View style={styles.actionsContainer}>
-        {actions.map((action, index) => (
-          <IconButton
-            key={index}
-            name={action}
-            color={colorUnselected}
-            size={32}
-            onPress={index == 0 ? props.onSecondaryAction : props.onThirdAction}
-          />
-        ))}
+        {actions &&
+          actions.map((action, index) => (
+            <IconButton
+              key={index}
+              name={action}
+              color={colorUnselected}
+              size={32}
+              onPress={
+                index == 0 ? props.onSecondaryAction : props.onThirdAction
+              }
+            />
+          ))}
       </View>
     </Appbar>
   );
