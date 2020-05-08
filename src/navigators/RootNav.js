@@ -16,24 +16,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {} from "../redux/actions/userActions";
 
-//firebase
-import firebase from "firebase";
-
 const RootStack = createStackNavigator();
 
 const RootNav = (props) => {
   const [firstTime, setFirstTime] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
   const [interests, setInterests] = useState(true);
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
-      if (user) setLogged(true);
-      else setLogged(false);
-    });
-  }, []);
 
   return (
     <>

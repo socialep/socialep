@@ -18,12 +18,6 @@ import { colorPrimaryDarker } from "./utils/colors";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNav from "./navigators/RootNav";
 
-//Fireabse
-import * as fireabse from "firebase";
-import fireabseConfig from "./config/firebaseConfig";
-
-fireabse.initializeApp(fireabseConfig);
-
 Store.dispatch(setStrings(strings("pt-br")));
 
 const App = () => {
