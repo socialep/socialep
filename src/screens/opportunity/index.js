@@ -49,6 +49,7 @@ const index = (props) => {
           address,
           period,
           duration,
+          id,
         },
       },
     },
@@ -83,7 +84,9 @@ const index = (props) => {
           type="contained"
           color={colorPrimary}
           text={strings.wantToSubscribe}
-          onPress={() => console.log("pressed")}
+          onPress={() =>
+            navigation.push("Register", { oppId: id, oppName: name })
+          }
           containerStyle={styles.btnSubscribe}
           style={styles.btnSubscribeInside}
         />
@@ -185,7 +188,7 @@ const index = (props) => {
             type="contained"
             color={colorSignInGoogle}
             text={strings.knowMore}
-            onPress={() => console.log("pressed")}
+            onPress={() => navigation.push("Organization")}
             containerStyle={styles.btnSubscribe}
             style={styles.btnSubscribeInside}
           />

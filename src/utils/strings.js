@@ -41,6 +41,20 @@ export default strings = (language) => {
         periodAndDuration: "Período e Duração",
         socialProject: "Projeto Social",
         knowMore: "Saiba Mais",
+        //
+        disponibility: "Disponibilidade",
+        disponibilityLabel: "Quando você estará disponível ?",
+        experience: "Experiência",
+        experienceLabel: "O que você já fez ?",
+        presentationLetter: "Carta de Apresentação",
+        presentationLabel: "Fale um pouco sobre você",
+        cancel: "Cancelar",
+        register: "Registre-se",
+        //
+        thanks: "OBRIGADA!",
+        registeredLabel:
+          "Seu pedido está sendo processado. Você receberá um e-mail quando sua assinatura estiver confirmada.",
+        ok: "Okay",
       };
   }
 };

@@ -27,6 +27,7 @@ const initialState = {
       address: "Alamenda Bosque imperial, 507, Salvador - Ba",
       period: "Julho a Novembro",
       duration: "2 Semanas",
+      id: "1",
     },
     {
       rating: 3.5,
@@ -50,6 +51,7 @@ const initialState = {
       address: "Alamenda Bosque imperial, 507, Salvador - Ba",
       period: "Julho a Novembro",
       duration: "2 Semanas",
+      id: "2",
     },
   ],
   favorites: [
@@ -75,8 +77,33 @@ const initialState = {
       address: "Alamenda Bosque imperial, 507, Salvador - Ba",
       period: "Julho a Novembro",
       duration: "2 Semanas",
+      id: "2",
     },
   ],
+  organization: {
+    logo:
+      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
+    name: "Organizaçã 1",
+    phone: "71 3035-0761",
+    address:
+      "Cidade - UF, rua Lorem Ipsum, nº 12, complemento, referência, Bloco A",
+    description:
+      "Descrição resumida do projeto, Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+    photos: [
+      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-0?alt=media",
+      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-1?alt=media",
+      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-2?alt=media",
+    ],
+    interests: {
+      animals: true,
+      education: true,
+      environment: true,
+      health: true,
+      human_rights: true,
+      sports: true,
+    },
+    rating: 4,
+  },
 };
 
 export default function (state = initialState, action) {

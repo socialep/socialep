@@ -4,6 +4,9 @@ import defaultScreenOpts from "../config/defaultScreenOpts";
 
 //screens
 import opportunity from "../screens/opportunity";
+import register from "../screens/register";
+import thanksForRegister from "../screens/thanksForRegister";
+import organization from "../screens/organization";
 
 //navigators
 import TabNav from "./TabNav";
@@ -21,6 +24,21 @@ export default MainNav = () => {
       <MainStack.Screen
         name="Opportunity"
         component={opportunity}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="Register"
+        component={register}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="ThanksForRegister"
+        component={thanksForRegister}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="Organization"
+        component={organization}
         options={defaultScreenOpts}
       />
     </MainStack.Navigator>
