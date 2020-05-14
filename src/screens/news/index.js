@@ -1,23 +1,32 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import styles from "./styles";
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";
+import PostCard from "../../components/PostCard";
 
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-//view-carousel | view-agenda | more-vert
-
 const index = (props) => {
   const {
-    ui: { strings },
+    ui: { strings, posts },
+    navigation,
   } = props;
   return (
     <View style={styles.container}>
       <CustomAppBar title={strings.feed} />
+      <ScrollView>
+        {posts.map((post, index) => (
+          <PostCard
+            key={index}
+            post={post}
+            onPress={() => navigation.push("Organization")}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 };

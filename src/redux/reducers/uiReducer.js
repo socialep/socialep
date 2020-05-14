@@ -104,6 +104,33 @@ const initialState = {
     },
     rating: 4,
   },
+  posts: [
+    {
+      body: "Venham Participar da Segunda Feijoada do Amor !!!",
+      createdAt: "2020-02-09T14:59:36.928Z",
+      id: "63T0GAofi0WqCFDeY3GF",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fposts%2F63T0GAofi0WqCFDeY3GF-image?alt=media",
+      likes: [],
+      orgId: "PM0glpxJHHOkKKP1Mb02Gkr3oHA3",
+      orgLogo:
+        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
+      orgName: "GAAC - Grupo de Apoio a Criança com Câncer",
+    },
+    {
+      body:
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+      createdAt: "2020-02-09T14:59:36.928Z",
+      id: "63T0GAofi0WqCFDeY3GF",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fposts%2F63T0GAofi0WqCFDeY3GF-image?alt=media",
+      likes: [],
+      orgId: "PM0glpxJHHOkKKP1Mb02Gkr3oHA3",
+      orgLogo:
+        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
+      orgName: "GAAC - Grupo de Apoio a Criança com Câncer",
+    },
+  ],
 };
 
 export default function (state = initialState, action) {
