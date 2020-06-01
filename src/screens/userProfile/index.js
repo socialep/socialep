@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, Text } from "react-native";
 import { Avatar, Divider } from "material-bread";
 import styles from "./styles";
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";
+import ProfileMenu from "../../components/ProfileMenu";
 
 //Util
 import { colorPrimary } from "../../utils/colors";
@@ -19,13 +20,22 @@ import { connect } from "react-redux";
 const index = (props) => {
   const {
     ui: { strings },
+    navigation,
   } = props;
+
+  const [menu, setMenu] = useState(false);
+
   return (
     <View style={styles.container}>
       <CustomAppBar
-        actions={["edit"]}
-        onSecondaryAction={() => console.log("onSecondaryAction")}
+        actions={["menu"]}
+        onSecondaryAction={() => setMenu(true)}
         title={strings.myAccount}
+      />
+      <ProfileMenu
+        navigation={navigation}
+        open={menu}
+        onClose={() => setMenu(false)}
       />
       <View style={styles.container}>
         <>

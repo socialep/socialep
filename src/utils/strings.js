@@ -55,6 +55,17 @@ export default strings = (language) => {
         registeredLabel:
           "Seu pedido está sendo processado. Você receberá um e-mail quando sua assinatura estiver confirmada.",
         ok: "Okay",
+        //
+        filterBy: "Filtrar Por",
+        modality: "Modalidade",
+        occupationArea: "Área de Atuação",
+        presential: "Presencial",
+        remote: "Remoto",
+        //
+        editProfile: "Editar Perfil",
+        signOut: "Desconectar",
+        howItWorks: "Como Funciona",
+        terms: "Termos",
       };
   }
 };

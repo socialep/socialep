@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 import { Avatar, IconButton, Divider } from "material-bread";
 
@@ -7,6 +7,7 @@ import {
   colorPrimary,
   colorFocused,
   colorInterestCardBg,
+  colorUnselected,
 } from "../utils/colors";
 
 const styles = StyleSheet.create({
@@ -52,6 +53,12 @@ export default PostCard = (props) => {
     post: { body, createdAt, id, image, likes, orgId, orgLogo, orgName },
   } = props;
 
+  const [liked, setLiked] = useState(false);
+
+  const handleLiked = () => {
+    setLiked(!liked);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -73,7 +80,12 @@ export default PostCard = (props) => {
         on
       />
       <View style={styles.likesView}>
-        <IconButton name="thumb-up" size={36} color={colorPrimary} />
+        <IconButton
+          name="thumb-up"
+          size={36}
+          color={liked ? colorPrimary : colorUnselected}
+          onPress={handleLiked}
+        />
         <Text style={styles.lblHeader}>{likes.length}</Text>
       </View>
       <View style={styles.divider}>

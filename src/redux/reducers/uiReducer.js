@@ -1,9 +1,20 @@
-import { SET_STRINGS, TOGGLE_LOADING, SET_ERROR, CLEAR_ERROR } from "../types";
+import {
+  SET_STRINGS,
+  TOGGLE_LOADING,
+  SET_ERROR,
+  CLEAR_ERROR,
+  SET_LOGGED,
+  SET_INTERESTS_FILLED,
+  TOGGLE_LOADING_USER,
+} from "../types";
 
 const initialState = {
   strings: {},
   loading: false,
+  loadingUser: false,
   error: null,
+  logged: false,
+  interestsFilled: false,
   opportunities: [
     {
       rating: 3.5,
@@ -137,6 +148,22 @@ export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case TOGGLE_LOADING_USER:
+      return {
+        ...state,
+        loadingUser: !state.loadingUser,
+      };
+    case SET_INTERESTS_FILLED:
+      return {
+        ...state,
+        interestsFilled: action.payload,
+      };
+    case SET_LOGGED: {
+      return {
+        ...state,
+        logged: action.payload,
+      };
+    }
     case CLEAR_ERROR:
       return {
         ...state,

@@ -18,25 +18,23 @@ import {} from "../redux/actions/userActions";
 
 const RootStack = createStackNavigator();
 
-const RootNav = (props) => {
+const RootNav = ({ ui: { loadingUser, logged, interestsFilled } }) => {
   const [firstTime, setFirstTime] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [logged, setLogged] = useState(true);
-  const [interests, setInterests] = useState(true);
+  //console.log({ logged, interestsFilled });
 
   return (
     <>
-      {loading ? (
+      {loadingUser ? (
         <Loading />
       ) : firstTime ? (
         <RootStack.Navigator headerMode="none">
           <RootStack.Screen name="CarouselNav" component={CarouselNav} />
         </RootStack.Navigator>
-      ) : logged && interests ? (
+      ) : logged && interestsFilled ? (
         <RootStack.Navigator headerMode="none">
           <RootStack.Screen name="MainNav" component={MainNav} />
         </RootStack.Navigator>
-      ) : logged && !interests ? (
+      ) : logged && !interestsFilled ? (
         <RootStack.Navigator headerMode="none">
           <RootStack.Screen
             name="selectInterests"
@@ -54,12 +52,14 @@ const RootNav = (props) => {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  ui: state.ui,
 });
 
 const mapDispatchToProps = {};
 
 RootNav.propTypes = {
   user: PropTypes.object.isRequired,
+  ui: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootNav);

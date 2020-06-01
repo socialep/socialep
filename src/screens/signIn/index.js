@@ -11,17 +11,19 @@ import signInHeader from "../../assets/signInHeader.png";
 import {
   colorSignInHeader,
   colorSignInGoogle,
-  colorSignInFacebook
+  colorSignInFacebook,
 } from "../../utils/colors";
 
 //REDUX
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { signInGoogle, signInFaceBook } from "../../redux/actions/userActions";
 
-const index = props => {
+const index = (props) => {
   const {
-    ui: { strings }
+    ui: { strings },
   } = props;
+
   return (
     <>
       <Image style={styles.header} source={signInHeader} />
@@ -45,12 +47,14 @@ const index = props => {
           type="contained"
           text={strings.signInFacebook}
           color={colorSignInFacebook}
+          onPress={props.signInFaceBook}
         />
         <Button
           containerStyle={styles.btnSignIn}
           type="contained"
           text={strings.signInGoogle}
           color={colorSignInGoogle}
+          onPress={props.signInGoogle}
         />
       </View>
       <Button
@@ -62,14 +66,19 @@ const index = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  ui: state.ui
+const mapStateToProps = (state) => ({
+  ui: state.ui,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  signInGoogle,
+  signInFaceBook,
+};
 
 index.propTypes = {
-  ui: PropTypes.object.isRequired
+  ui: PropTypes.object.isRequired,
+  signInGoogle: PropTypes.func.isRequired,
+  signInFaceBook: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

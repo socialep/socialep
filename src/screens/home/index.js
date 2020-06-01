@@ -7,6 +7,7 @@ import CustomAppBar from "../../components/CustomAppBar";
 import Loading from "../../components/Loading";
 import OpportunityCard from "../../components/OpportunityCard";
 import OpportunityListItem from "../../components/OpportunityListItem";
+import RightMenu from "../../components/RightMenu";
 
 //Redux
 import PropTypes from "prop-types";
@@ -21,6 +22,7 @@ const index = (props) => {
   } = props;
 
   const [mode, setMode] = useState("carrousel");
+  const [menu, setMenu] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -32,8 +34,15 @@ const index = (props) => {
         onSecondaryAction={() =>
           setMode(mode === "carrousel" ? "agenda" : "carrousel")
         }
-        onThirdAction={() => console.log("onThirdAction")}
+        onThirdAction={() => setMenu(true)}
         title={strings.home}
+      />
+      <RightMenu
+        open={menu}
+        onClose={(changes) => {
+          console.log(changes);
+          setMenu(false);
+        }}
       />
       {loading ? (
         <Loading />
