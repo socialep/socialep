@@ -5,6 +5,7 @@ export const SET_ERROR = "SET_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 export const SET_LOGGED = "SET_LOGGED";
 export const SET_INTERESTS_FILLED = "SET_INTERESTS_FILLED";
+export const SET_OPPS = "SET_OPPS";
 
 //User Types
 export const SET_USER = "SET_USER";

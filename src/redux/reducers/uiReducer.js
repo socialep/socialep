@@ -6,6 +6,7 @@ import {
   SET_LOGGED,
   SET_INTERESTS_FILLED,
   TOGGLE_LOADING_USER,
+  SET_OPPS,
 } from "../types";
 
 const initialState = {
@@ -15,56 +16,7 @@ const initialState = {
   error: null,
   logged: false,
   interestsFilled: false,
-  opportunities: [
-    {
-      rating: 3.5,
-      photos: [
-        "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
-      ],
-      name: "Oportunidade de Teste 1",
-      description:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
-      liked: false,
-      interests: {
-        animals: true,
-        education: false,
-        environment: false,
-        health: true,
-        human_rights: true,
-        sports: false,
-      },
-      requirements:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
-      address: "Alamenda Bosque imperial, 507, Salvador - Ba",
-      period: "Julho a Novembro",
-      duration: "2 Semanas",
-      id: "1",
-    },
-    {
-      rating: 3.5,
-      photos: [
-        "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
-      ],
-      name: "Oportunidade de Teste 2",
-      description:
-        "Oportunidade de Teste Oportunidade de Teste Oportunidade de Teste",
-      liked: true,
-      interests: {
-        animals: true,
-        education: true,
-        environment: true,
-        health: true,
-        human_rights: true,
-        sports: true,
-      },
-      requirements:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
-      address: "Alamenda Bosque imperial, 507, Salvador - Ba",
-      period: "Julho a Novembro",
-      duration: "2 Semanas",
-      id: "2",
-    },
-  ],
+  opportunities: [],
   favorites: [
     {
       rating: 3.5,
@@ -148,6 +100,11 @@ export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case SET_OPPS:
+      return {
+        ...state,
+        opportunities: action.payload,
+      };
     case TOGGLE_LOADING_USER:
       return {
         ...state,

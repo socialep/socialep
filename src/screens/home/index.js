@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView } from "react-native";
 import styles from "./styles";
 
@@ -12,17 +12,24 @@ import RightMenu from "../../components/RightMenu";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { getOpps } from "../../redux/actions/uiActions";
 
 //view-carousel | view-agenda | more-vert
 
 const index = (props) => {
   const {
     ui: { strings, loading, opportunities },
+    user: { interests },
     navigation,
+    getOpps,
   } = props;
 
   const [mode, setMode] = useState("carrousel");
   const [menu, setMenu] = useState(false);
+
+  useEffect(() => {
+    getOpps(interests);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -40,7 +47,9 @@ const index = (props) => {
       <RightMenu
         open={menu}
         onClose={(changes) => {
-          console.log(changes);
+          if (changes != false) {
+            getOpps(changes.interests);
+          }
           setMenu(false);
         }}
       />
@@ -73,12 +82,17 @@ const index = (props) => {
 
 const mapStateToProps = (state) => ({
   ui: state.ui,
+  user: state.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getOpps,
+};
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  getOpps: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

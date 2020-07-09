@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
-import {
-  SheetSide,
-  List,
-  ListItem,
-  Icon,
-  Divider,
-  Checkbox,
-} from "material-bread";
+import { SheetSide, List, ListItem, Checkbox } from "material-bread";
 
 import {
   colorLightGrayBg,
@@ -52,24 +45,18 @@ const RightMenu = (props) => {
     open,
     onClose,
     ui: { strings },
+    user: { interests },
   } = props;
 
   const [filter, setFilter] = useState({
-    interests: {
-      animals: true,
-      education: false,
-      environment: false,
-      health: false,
-      human_rights: true,
-      sports: true,
-    },
+    interests: interests,
     modalities: {
       presential: false,
       remote: true,
     },
   });
 
-  const aux = filter;
+  const [aux, setAux] = useState(filter);
 
   const handleInterests = (key, value) => {
     setFilter({
@@ -91,11 +78,16 @@ const RightMenu = (props) => {
     });
   };
 
+  const handleClose = () => {
+    onClose(filter === aux ? false : filter);
+    setAux(filter);
+  };
+
   return (
     <SheetSide
       visible={open}
-      onBackdropPress={() => onClose(aux != filter)}
-      onSwipeRight={() => onClose(aux != filter)}
+      onBackdropPress={handleClose}
+      onSwipeRight={handleClose}
       widthPercentage={0.63}
     >
       <Text style={styles.lblHeader}>{strings.filterBy}</Text>
@@ -247,6 +239,7 @@ const RightMenu = (props) => {
 
 const mapStateToProps = (state) => ({
   ui: state.ui,
+  user: state.user,
 });
 
 const mapDispatchToProps = {
@@ -255,6 +248,7 @@ const mapDispatchToProps = {
 
 RightMenu.propTypes = {
   ui: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
   signOut: PropTypes.func.isRequired,
 };
 
