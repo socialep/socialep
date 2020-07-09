@@ -13,7 +13,7 @@ export const signInGoogle = () => async (dispatch) => {
 };
 
 export const signInFaceBook = () => async (dispatch) => {
-  console.log("facebook");
+  dispatch({ type: TOGGLE_LOADING_USER });
   await Facebook.initializeAsync("389365785280873");
 
   const { type, token } = await Facebook.logInWithReadPermissionsAsync({
@@ -22,22 +22,18 @@ export const signInFaceBook = () => async (dispatch) => {
 
   if (type === "success") {
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
-    firebase
-      .auth()
-      .signInWithCredential(credential)
-      .catch((error) => {
-        console.log(error);
-      });
+    await firebase.auth().signInWithCredential(credential);
   }
+
+  dispatch({ type: TOGGLE_LOADING_USER });
 };
 
 export const getUserData = (userData) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING_USER });
   try {
-    //console.log(userData);
     const {
-      data: { user, interestsFilled },
-    } = await axiosInstance.get("/getUser", userData);
+      data: { interestsFilled, user },
+    } = await axiosInstance.post("/getUser", userData);
 
     dispatch({ type: SET_USER, payload: user });
     dispatch({ type: SET_LOGGED, payload: true });
@@ -49,15 +45,26 @@ export const getUserData = (userData) => async (dispatch) => {
   }
 };
 
-export const updateInterests = (interests) => async (dispatch) => {};
-
-export const signOut = () => async (dispatch) => {
+export const updateInterests = (interests, id) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING_USER });
   try {
-    await firebase.auth.signOut();
+    const { data } = await axiosInstance.post("/uploadInterests", {
+      interests,
+      id,
+    });
+
+    dispatch({ type: TOGGLE_LOADING_USER });
+    dispatch({ type: SET_INTERESTS_FILLED, payload: true });
+  } catch {
+    dispatch({ type: TOGGLE_LOADING_USER });
+  }
+};
+
+export const signOut = () => async (dispatch) => {
+  try {
+    await firebase.auth().signOut();
     dispatch({ type: SET_LOGGED, payload: false });
-    dispatch({ type: TOGGLE_LOADING_USER });
   } catch (err) {
-    dispatch({ type: TOGGLE_LOADING_USER });
+    console.log(err);
   }
 };

@@ -26,13 +26,15 @@ if (!firebase.apps.length) {
 }
 
 firebase.auth().onAuthStateChanged((user) => {
-  const userData = {
-    uid: user.uid,
-    name: user.displayName,
-    email: user.providerData[0].email,
-    photo: user.photoURL,
-  };
-  if (user) Store.dispatch(getUserData(userData));
+  if (user != null) {
+    const userData = {
+      uid: user.uid,
+      name: user.displayName,
+      email: user.providerData[0].email,
+      photo: user.photoURL,
+    };
+    Store.dispatch(getUserData(userData));
+  }
 });
 
 Store.dispatch(setStrings(strings("pt-br")));

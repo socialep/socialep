@@ -5,6 +5,7 @@ import { Button } from "material-bread";
 //REDUX
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { updateInterests } from "../../redux/actions/userActions";
 
 //Assets
 import congrats from "../../assets/congrats.png";
@@ -22,26 +23,27 @@ import { colorPrimary } from "../../utils/colors";
 //Components
 import InterestCard from "../../components/InterestCard";
 
-const index = props => {
+const index = (props) => {
   const [interests, setInterests] = useState({
     animals: false,
     humanRights: false,
     sports: false,
     environment: false,
     health: false,
-    education: false
+    education: false,
   });
 
   const [error, setError] = useState(null);
 
   const {
-    ui: { strings }
+    ui: { strings },
+    user: { id },
   } = props;
 
   const handleToggle = (label, value) => {
     setInterests({
       ...interests,
-      [label]: value
+      [label]: value,
     });
   };
 
@@ -56,6 +58,8 @@ const index = props => {
       !interests.education
     )
       return setError(strings.mustChooseAtLeastOne);
+
+    props.updateInterests(interests, id);
   };
 
   return (
@@ -65,37 +69,37 @@ const index = props => {
       <Text style={styles.lblSub}>{strings.howYWHelp}</Text>
       <View style={styles.buttonsList}>
         <InterestCard
-          onPress={selected => handleToggle("animals", selected)}
+          onPress={(selected) => handleToggle("animals", selected)}
           icon={animal}
           label={strings.animals}
           selected={interests.animals}
         />
         <InterestCard
-          onPress={selected => handleToggle("humanRights", selected)}
+          onPress={(selected) => handleToggle("humanRights", selected)}
           icon={hand}
           label={strings.humanRights}
           selected={interests.humanRights}
         />
         <InterestCard
-          onPress={selected => handleToggle("sports", selected)}
+          onPress={(selected) => handleToggle("sports", selected)}
           icon={ball}
           label={strings.sports}
           selected={interests.sports}
         />
         <InterestCard
-          onPress={selected => handleToggle("environment", selected)}
+          onPress={(selected) => handleToggle("environment", selected)}
           icon={leaf}
           label={strings.environment}
           selected={interests.environment}
         />
         <InterestCard
-          onPress={selected => handleToggle("health", selected)}
+          onPress={(selected) => handleToggle("health", selected)}
           icon={pills}
           label={strings.health}
           selected={interests.health}
         />
         <InterestCard
-          onPress={selected => handleToggle("education", selected)}
+          onPress={(selected) => handleToggle("education", selected)}
           icon={gradHat}
           label={strings.education}
           selected={interests.education}
@@ -113,14 +117,19 @@ const index = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  ui: state.ui
+const mapStateToProps = (state) => ({
+  ui: state.ui,
+  user: state.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  updateInterests,
+};
 
 index.propTypes = {
-  ui: PropTypes.object.isRequired
+  ui: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  updateInterests: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

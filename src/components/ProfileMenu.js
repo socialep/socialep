@@ -65,7 +65,7 @@ const ProfileMenu = (props) => {
         <Divider />
         <ListItem
           text={strings.signOut}
-          onPress={() => {}}
+          onPress={() => props.signOut()}
           icon={<Icon name="exit-to-app" color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}
