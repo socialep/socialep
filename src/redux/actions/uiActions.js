@@ -72,3 +72,11 @@ export const uploadFavOpps = (oppId, favOpps, userId) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const uploadPostFavs = (reqData) => async (dispatch) => {
+  try {
+    await axiosInstance.post("/uploadOppLikes", reqData);
+  } catch (err) {
+    console.log(err);
+  }
+};

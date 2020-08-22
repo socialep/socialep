@@ -10,6 +10,11 @@ import {
   colorUnselected,
 } from "../utils/colors";
 
+//Redux
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { uploadPostFavs } from "../redux/actions/uiActions";
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colorInterestCardBg,
@@ -48,15 +53,33 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostCard = (props) => {
+const PostCard = (props) => {
   const {
+    user,
     post: { body, createdAt, id, image, likes, orgId, orgLogo, orgName },
+    onPress,
+    uploadPostFavs,
   } = props;
 
-  const [liked, setLiked] = useState(false);
+  const [likesList, setLikesList] = useState(likes);
 
   const handleLiked = () => {
-    setLiked(!liked);
+    const aux = [];
+    if (likesList.includes(user.id)) {
+      likesList.forEach((userId) =>
+        userId === user.id ? {} : aux.push(userId)
+      );
+    } else {
+      likesList.forEach((userId) => aux.push(userId));
+      aux.push(user.id);
+    }
+    const reqData = {
+      likes: aux,
+      id: id,
+    };
+
+    setLikesList(aux);
+    uploadPostFavs(reqData);
   };
 
   return (
@@ -69,7 +92,7 @@ export default PostCard = (props) => {
           onPress={() => props.onPress()}
           ripple
         />
-        <Text style={styles.lblHeader} onPress={() => props.onPress()}>
+        <Text style={styles.lblHeader} onPress={() => onPress(orgId)}>
           {orgName}
         </Text>
       </View>
@@ -83,10 +106,10 @@ export default PostCard = (props) => {
         <IconButton
           name="thumb-up"
           size={36}
-          color={liked ? colorPrimary : colorUnselected}
+          color={likesList.includes(user.id) ? colorPrimary : colorUnselected}
           onPress={handleLiked}
         />
-        <Text style={styles.lblHeader}>{likes.length}</Text>
+        <Text style={styles.lblHeader}>{likesList.length}</Text>
       </View>
       <View style={styles.divider}>
         <Divider />
@@ -95,3 +118,18 @@ export default PostCard = (props) => {
     </View>
   );
 };
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = {
+  uploadPostFavs,
+};
+
+PostCard.propTypes = {
+  user: PropTypes.object.isRequired,
+  uploadPostFavs: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostCard);
