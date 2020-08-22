@@ -1,4 +1,4 @@
-import { SET_USER } from "../types";
+import { SET_USER, SET_FAVS_LIST } from "../types";
 
 const initialState = {
   id: "",
@@ -20,6 +20,11 @@ export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case SET_FAVS_LIST:
+      return {
+        ...state,
+        favoritesOpportunities: action.payload,
+      };
     case SET_USER:
       return {
         ...action.payload,

@@ -21,6 +21,7 @@ import CustomAppBar from "../../components/CustomAppBar";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { uploadFavOpps } from "../../redux/actions/uiActions";
 
 //Assets
 import animal from "../../assets/animal.svg";
@@ -35,12 +36,14 @@ import clock from "../../assets/clock.png";
 const index = (props) => {
   const {
     ui: { strings },
+    user: { favoritesOpportunities },
+    user,
     navigation,
+    uploadFavOpps,
     route: {
       params: {
         opp: {
           rating,
-          liked,
           photos,
           name,
           description,
@@ -55,8 +58,6 @@ const index = (props) => {
     },
   } = props;
 
-  const handleFavPressed = () => {};
-
   return (
     <View style={styles.container}>
       <CustomAppBar mode="arrow-back" onNavigation={() => navigation.pop()} />
@@ -67,10 +68,14 @@ const index = (props) => {
             <Text style={styles.lblRating}>{rating}</Text>
           </View>
           <IconButton
-            name={liked ? "favorite" : "favorite-border"}
+            name={
+              favoritesOpportunities.includes(id)
+                ? "favorite"
+                : "favorite-border"
+            }
             size={38}
             color={colorFavorite}
-            onPress={handleFavPressed}
+            onPress={() => uploadFavOpps(id, favoritesOpportunities, user.id)}
           />
         </View>
         <SliderBox
@@ -200,12 +205,17 @@ const index = (props) => {
 
 const mapStateToProps = (state) => ({
   ui: state.ui,
+  user: state.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  uploadFavOpps,
+};
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  uploadFavOpps: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

@@ -7,6 +7,8 @@ import {
   SET_INTERESTS_FILLED,
   TOGGLE_LOADING_USER,
   SET_OPPS,
+  SET_POSTS,
+  SET_FAVS,
 } from "../types";
 
 const initialState = {
@@ -17,32 +19,7 @@ const initialState = {
   logged: false,
   interestsFilled: false,
   opportunities: [],
-  favorites: [
-    {
-      rating: 3.5,
-      photos: [
-        "https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
-      ],
-      name: "Oportunidade de Teste 2",
-      description:
-        "Oportunidade de Teste Oportunidade de Teste Oportunidade de Teste",
-      liked: true,
-      interests: {
-        animals: true,
-        education: true,
-        environment: true,
-        health: true,
-        human_rights: true,
-        sports: true,
-      },
-      requirements:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.",
-      address: "Alamenda Bosque imperial, 507, Salvador - Ba",
-      period: "Julho a Novembro",
-      duration: "2 Semanas",
-      id: "2",
-    },
-  ],
+  favorites: [],
   organization: {
     logo:
       "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
@@ -67,39 +44,23 @@ const initialState = {
     },
     rating: 4,
   },
-  posts: [
-    {
-      body: "Venham Participar da Segunda Feijoada do Amor !!!",
-      createdAt: "2020-02-09T14:59:36.928Z",
-      id: "63T0GAofi0WqCFDeY3GF",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fposts%2F63T0GAofi0WqCFDeY3GF-image?alt=media",
-      likes: [],
-      orgId: "PM0glpxJHHOkKKP1Mb02Gkr3oHA3",
-      orgLogo:
-        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
-      orgName: "GAAC - Grupo de Apoio a Criança com Câncer",
-    },
-    {
-      body:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
-      createdAt: "2020-02-09T14:59:36.928Z",
-      id: "63T0GAofi0WqCFDeY3GF",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fposts%2F63T0GAofi0WqCFDeY3GF-image?alt=media",
-      likes: [],
-      orgId: "PM0glpxJHHOkKKP1Mb02Gkr3oHA3",
-      orgLogo:
-        "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
-      orgName: "GAAC - Grupo de Apoio a Criança com Câncer",
-    },
-  ],
+  posts: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case SET_FAVS:
+      return {
+        ...state,
+        favorites: action.payload,
+      };
+    case SET_POSTS:
+      return {
+        ...state,
+        posts: action.payload,
+      };
     case SET_OPPS:
       return {
         ...state,

@@ -12,16 +12,18 @@ import RightMenu from "../../components/RightMenu";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getOpps } from "../../redux/actions/uiActions";
+import { getOpps, uploadFavOpps } from "../../redux/actions/uiActions";
 
 //view-carousel | view-agenda | more-vert
 
 const index = (props) => {
   const {
     ui: { strings, loading, opportunities },
-    user: { interests },
+    user: { interests, favoritesOpportunities },
+    user,
     navigation,
     getOpps,
+    uploadFavOpps,
   } = props;
 
   const [mode, setMode] = useState("carrousel");
@@ -30,7 +32,7 @@ const index = (props) => {
   useEffect(() => {
     getOpps(interests);
   }, []);
-
+  
   return (
     <View style={styles.container}>
       <CustomAppBar
@@ -62,16 +64,22 @@ const index = (props) => {
                 <OpportunityCard
                   key={index}
                   opportunity={opp}
-                  handleFavPressed={() => console.log("favorited")}
+                  handleFavPressed={() =>
+                    uploadFavOpps(opp.id, favoritesOpportunities, user.id)
+                  }
                   btnPressed={() => navigation.push("Opportunity", { opp })}
+                  liked={favoritesOpportunities.includes(opp.id)}
                 />
               ))
             : opportunities.map((opp, index) => (
                 <OpportunityListItem
                   key={index}
                   opportunity={opp}
-                  handleFavPressed={() => console.log("favorited")}
+                  handleFavPressed={() =>
+                    uploadFavOpps(opp.id, favoritesOpportunities, user.id)
+                  }
                   btnPressed={() => navigation.push("Opportunity", { opp })}
+                  liked={favoritesOpportunities.includes(opp.id)}
                 />
               ))}
         </ScrollView>
@@ -87,12 +95,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getOpps,
+  uploadFavOpps,
 };
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   getOpps: PropTypes.func.isRequired,
+  uploadFavOpps: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

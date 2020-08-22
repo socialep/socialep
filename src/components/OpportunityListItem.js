@@ -49,13 +49,11 @@ const styles = StyleSheet.create({
 export default OpportunityListItem = (props) => {
   const {
     opportunity: { rating, photos, name, description },
+    liked,
   } = props;
-
-  const [liked, setLiked] = useState(props.opportunity.liked);
 
   const handleFavPressed = () => {
     props.handleFavPressed(!liked);
-    setLiked(!liked);
   };
 
   return (
