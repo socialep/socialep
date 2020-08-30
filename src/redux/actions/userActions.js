@@ -6,6 +6,8 @@ import {
   SET_LOGGED,
   SET_USER,
   SET_INTERESTS_FILLED,
+  TOGGLE_LOADING,
+  SET_USERS_REGISTERED,
 } from "../types";
 
 export const signInGoogle = () => async (dispatch) => {
@@ -66,5 +68,29 @@ export const signOut = () => async (dispatch) => {
     dispatch({ type: SET_LOGGED, payload: false });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const registerForOpp = (formData, navigation) => async (dispatch) => {
+  dispatch({ type: TOGGLE_LOADING });
+  try {
+    const { data } = await axiosInstance.post("/registerForOpp", formData);
+    dispatch({ type: TOGGLE_LOADING });
+    navigation.push("ThanksForRegister");
+  } catch (err) {
+    dispatch({ type: TOGGLE_LOADING });
+    console.log(err);
+  }
+};
+
+export const cancelRegistration = (reqData) => async (dispatch) => {
+  dispatch({ type: TOGGLE_LOADING });
+  try {
+    const { data } = await axiosInstance.post("/cancelRegistration", reqData);
+    dispatch({ type: SET_USERS_REGISTERED, data });
+    dispatch({ type: TOGGLE_LOADING });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: TOGGLE_LOADING });
   }
 };

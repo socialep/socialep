@@ -15,3 +15,6 @@ export const SET_FAVS_LIST = "SET_FAVS_LIST";
 export const SET_POSTS = "SET_POSTS";
 export const SET_OPPS = "SET_OPPS";
 export const SET_FAVS = "SET_FAVS";
+export const SET_ORG = "SET_ORG";
+export const SET_OPP = "SET_OPP";
+export const SET_USERS_REGISTERED = "SET_USERS_REGISTERED";

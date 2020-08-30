@@ -34,7 +34,9 @@ const index = (props) => {
             <PostCard
               key={index}
               post={post}
-              onPress={(orgId) => navigation.push("Organization")}
+              onPress={(orgId) =>
+                navigation.push("Organization", { id: orgId })
+              }
             />
           ))}
         </ScrollView>

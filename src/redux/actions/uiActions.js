@@ -6,6 +6,8 @@ import {
   SET_POSTS,
   SET_FAVS,
   SET_FAVS_LIST,
+  SET_ORG,
+  SET_OPP,
 } from "../types";
 
 export const setStrings = (data) => (dispatch) => {
@@ -79,4 +81,21 @@ export const uploadPostFavs = (reqData) => async (dispatch) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getOrg = (id) => async (dispatch) => {
+  dispatch({ type: TOGGLE_LOADING });
+  try {
+    const { data } = await axiosInstance.post("/getOrgData", { id });
+    console.log(data);
+    dispatch({ type: TOGGLE_LOADING });
+    dispatch({ type: SET_ORG, payload: data });
+  } catch (err) {
+    consolr.log(err);
+    dispatch({ type: TOGGLE_LOADING });
+  }
+};
+
+export const setOpp = (opp) => async (dispatch) => {
+  dispatch({ type: SET_OPP, payload: opp });
 };

@@ -89,7 +89,7 @@ const PostCard = (props) => {
           type="image"
           size={50}
           image={<Image source={{ uri: orgLogo }} />}
-          onPress={() => props.onPress()}
+          onPress={() => onPress(orgId)}
           ripple
         />
         <Text style={styles.lblHeader} onPress={() => onPress(orgId)}>

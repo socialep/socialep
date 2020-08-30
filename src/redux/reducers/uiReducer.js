@@ -9,6 +9,9 @@ import {
   SET_OPPS,
   SET_POSTS,
   SET_FAVS,
+  SET_ORG,
+  SET_OPP,
+  SET_USERS_REGISTERED,
 } from "../types";
 
 const initialState = {
@@ -21,36 +24,67 @@ const initialState = {
   opportunities: [],
   favorites: [],
   organization: {
-    logo:
-      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Flogo?alt=media",
-    name: "Organizaçã 1",
-    phone: "71 3035-0761",
-    address:
-      "Cidade - UF, rua Lorem Ipsum, nº 12, complemento, referência, Bloco A",
-    description:
-      "Descrição resumida do projeto, Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
-    photos: [
-      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-0?alt=media",
-      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-1?alt=media",
-      "https://firebasestorage.googleapis.com/v0/b/socialep-3bdd5.appspot.com/o/Organizations-Images%2FPM0glpxJHHOkKKP1Mb02Gkr3oHA3%2Fphotos%2Fimage-2?alt=media",
-    ],
+    logo: "",
+    name: "",
+    phone: "",
+    address: "",
+    description: "",
+    photos: [],
     interests: {
-      animals: true,
-      education: true,
-      environment: true,
-      health: true,
-      human_rights: true,
-      sports: true,
+      animals: false,
+      education: false,
+      environment: false,
+      health: false,
+      human_rights: false,
+      sports: false,
     },
-    rating: 4,
+    rating: 0,
   },
   posts: [],
+  opportunity: {
+    rating: 0,
+    photos: [],
+    name: "",
+    description: "",
+    interests: {
+      animals: false,
+      education: false,
+      environment: false,
+      health: false,
+      human_rights: false,
+      sports: false,
+    },
+    requirements: "",
+    address: "",
+    period: "",
+    duration: "",
+    id: "",
+    usersRegistered: [],
+  },
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case SET_USERS_REGISTERED:
+      return {
+        ...state,
+        opportunity: {
+          ...state.opportunity,
+          usersRegistered: action.payload,
+        },
+      };
+    case SET_OPP:
+      return {
+        ...state,
+        opportunity: action.payload,
+      };
+    case SET_ORG:
+      return {
+        ...state,
+        organization: action.payload,
+      };
     case SET_FAVS:
       return {
         ...state,

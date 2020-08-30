@@ -29,8 +29,10 @@ export default strings = (language) => {
         continue: "Continuar",
         //
         mustChooseAtLeastOne: "Você precisa escolher ao menos um interesse",
+        mustNotBeEmpty: "O campo precisa ser preenchido",
         //
         wantToSubscribe: "Quero me inscrever",
+        cancelRegister: "Cancelar Inscrição",
         //
         home: "Home",
         feed: "Feed",

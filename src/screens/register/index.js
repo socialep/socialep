@@ -12,14 +12,17 @@ import CustomAppBar from "../../components/CustomAppBar";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { registerForOpp } from "../../redux/actions/userActions";
 
 const index = (props) => {
   const {
     ui: { strings, loading },
+    user,
     navigation,
     route: {
       params: { oppId, oppName },
     },
+    registerForOpp,
   } = props;
 
   const [form, setForm] = useState({
@@ -27,6 +30,8 @@ const index = (props) => {
     experience: "",
     presentation: "",
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (key, value) => {
     setForm({
@@ -36,7 +41,30 @@ const index = (props) => {
   };
 
   const handleSubmit = () => {
-    navigation.push("ThanksForRegister");
+    let mErrors = {};
+    if (form.disponibility.length == 0 || form.disponibility.trim === "")
+      mErrors.disponibility = strings.mustNotBeEmpty;
+    if (form.experience.length == 0 || form.experience.trim === "")
+      mErrors.experience = strings.mustNotBeEmpty;
+    if (form.presentation.length == 0 || form.presentation.trim === "")
+      mErrors.presentation = strings.mustNotBeEmpty;
+
+    if (!Object.keys(mErrors).length == 0) return setErrors(mErrors);
+
+    const formData = {
+      oppId: oppId,
+      registrationData: {
+        availability: form.disponibility,
+        experience: form.experience,
+        presentation: form.presentation,
+        userEmail: user.email,
+        userName: user.name,
+        userPhoto: user.photo,
+        userUid: user.id,
+      },
+    };
+
+    registerForOpp(formData, navigation);
   };
 
   return (
@@ -53,6 +81,9 @@ const index = (props) => {
             label={strings.disponibilityLabel}
             value={form.disponibility}
             onChangeText={(value) => handleChange("disponibility", value)}
+            helperText={errors.disponibility}
+            helperTextStyle={{ color: "red" }}
+            textAlignVertical="top"
           />
         </View>
         <View style={styles.askContainer}>
@@ -65,6 +96,9 @@ const index = (props) => {
             label={strings.experienceLabel}
             value={form.experience}
             onChangeText={(value) => handleChange("experience", value)}
+            helperText={errors.experience}
+            helperTextStyle={{ color: "red" }}
+            textAlignVertical="top"
           />
         </View>
         <View style={styles.askContainer}>
@@ -77,6 +111,9 @@ const index = (props) => {
             label={strings.presentationLabel}
             value={form.presentation}
             onChangeText={(value) => handleChange("presentation", value)}
+            helperText={errors.presentation}
+            helperTextStyle={{ color: "red" }}
+            textAlignVertical="top"
           />
         </View>
         <View style={styles.horizontalContainer}>
@@ -87,6 +124,7 @@ const index = (props) => {
             onPress={() => navigation.pop()}
             containerStyle={styles.btnSubscribe}
             style={styles.btnSubscribeInside}
+            disabled={loading}
           />
           <Button
             type="contained"
@@ -95,6 +133,8 @@ const index = (props) => {
             onPress={() => handleSubmit()}
             containerStyle={styles.btnSubscribe}
             style={styles.btnSubscribeInside}
+            disabled={loading}
+            loading={loading}
           />
         </View>
       </ScrollView>
@@ -104,12 +144,15 @@ const index = (props) => {
 
 const mapStateToProps = (state) => ({
   ui: state.ui,
+  user: state.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { registerForOpp };
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  registerForOpp: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

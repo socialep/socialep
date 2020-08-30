@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Text, Image } from "react-native";
 import { IconButton, Icon, Button } from "material-bread";
 import { SliderBox } from "react-native-image-slider-box";
@@ -22,6 +22,7 @@ import OpportunityListItem from "../../components/OpportunityListItem";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { getOrg } from "../../redux/actions/uiActions";
 
 //Assets
 import animal from "../../assets/animal.svg";
@@ -36,6 +37,7 @@ import clock from "../../assets/clock.png";
 const index = (props) => {
   const {
     navigation,
+    getOrg,
     ui: {
       strings,
       loading,
@@ -51,7 +53,14 @@ const index = (props) => {
       },
       opportunities,
     },
+    route: {
+      params: { id },
+    },
   } = props;
+
+  useEffect(() => {
+    getOrg(id);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -198,10 +207,13 @@ const mapStateToProps = (state) => ({
   ui: state.ui,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getOrg,
+};
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
+  getOrg: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

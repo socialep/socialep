@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { View, ScrollView, Text, Image } from "react-native";
 import { IconButton, Icon, Button } from "material-bread";
 import { SliderBox } from "react-native-image-slider-box";
@@ -21,7 +21,8 @@ import CustomAppBar from "../../components/CustomAppBar";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { uploadFavOpps } from "../../redux/actions/uiActions";
+import { uploadFavOpps, setOpp } from "../../redux/actions/uiActions";
+import { cancelRegistration } from "../../redux/actions/userActions";
 
 //Assets
 import animal from "../../assets/animal.svg";
@@ -35,28 +36,39 @@ import clock from "../../assets/clock.png";
 
 const index = (props) => {
   const {
-    ui: { strings },
+    ui: {
+      strings,
+      loading,
+      opportunity: {
+        rating,
+        photos,
+        name,
+        description,
+        interests,
+        requirements,
+        address,
+        period,
+        duration,
+        id,
+        usersRegistered,
+      },
+    },
     user: { favoritesOpportunities },
     user,
     navigation,
     uploadFavOpps,
+    cancelRegistration,
+    setOpp,
     route: {
-      params: {
-        opp: {
-          rating,
-          photos,
-          name,
-          description,
-          interests,
-          requirements,
-          address,
-          period,
-          duration,
-          id,
-        },
-      },
+      params: { opp },
     },
   } = props;
+
+  const isRegistered = usersRegistered.includes(user.id);
+
+  useEffect(() => {
+    setOpp(opp);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -87,13 +99,17 @@ const index = (props) => {
         />
         <Button
           type="contained"
-          color={colorPrimary}
-          text={strings.wantToSubscribe}
+          color={isRegistered ? colorSignInGoogle : colorPrimary}
+          text={isRegistered ? strings.cancelRegister : strings.wantToSubscribe}
           onPress={() =>
-            navigation.push("Register", { oppId: id, oppName: name })
+            isRegistered
+              ? cancelRegistration({ userId: user.id, oppId: id })
+              : navigation.push("Register", { oppId: id, oppName: name })
           }
           containerStyle={styles.btnSubscribe}
           style={styles.btnSubscribeInside}
+          loading={loading}
+          disabled={loading}
         />
         <Text style={styles.lblName}>{name}</Text>
         <Text style={styles.lblDes}>{description}</Text>
@@ -210,12 +226,16 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   uploadFavOpps,
+  cancelRegistration,
+  setOpp,
 };
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  setOpp: PropTypes.func.isRequired,
   uploadFavOpps: PropTypes.func.isRequired,
+  cancelRegistration: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);
