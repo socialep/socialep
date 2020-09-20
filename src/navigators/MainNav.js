@@ -7,6 +7,7 @@ import opportunity from "../screens/opportunity";
 import register from "../screens/register";
 import thanksForRegister from "../screens/thanksForRegister";
 import organization from "../screens/organization";
+import editProfile from "../screens/editProfile";
 
 //navigators
 import TabNav from "./TabNav";
@@ -39,6 +40,11 @@ export default MainNav = () => {
       <MainStack.Screen
         name="Organization"
         component={organization}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="EditProfile"
+        component={editProfile}
         options={defaultScreenOpts}
       />
     </MainStack.Navigator>

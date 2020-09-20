@@ -3,6 +3,8 @@ import {
   colorInterestCardBg,
   colorFocused,
   colorUnselected,
+  colorLightGrayBg,
+  fontColor,
 } from "../../utils/colors";
 
 export default styles = StyleSheet.create({
@@ -42,5 +44,26 @@ export default styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 21,
     color: colorUnselected,
+  },
+  interestsContainer: {
+    marginTop: 16,
+    backgroundColor: colorLightGrayBg,
+    padding: 10,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  iconContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 12,
+    width: "50%",
+  },
+  lblInterest: {
+    fontSize: 20,
+    color: fontColor,
+    marginLeft: 10,
+    width: "60%",
+    textAlign: "center",
   },
 });
