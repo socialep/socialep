@@ -57,7 +57,10 @@ const ProfileMenu = (props) => {
         />
         <ListItem
           text={strings.editProfile}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.push("EditProfile");
+            onClose();
+          }}
           icon={<Icon name="edit" color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}

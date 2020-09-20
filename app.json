@@ -31,6 +31,11 @@
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
+      "config":{
+        "googleSignIn": {
+          "apiKey": "AIzaSyCn8L3b8dzgwGSr_NENWyJByUdnmCgVxbA"
+        }
+      },
       "package": "com.socialEpoque.socialEp",
       "googleServicesFile": "./google-services.json"
     }

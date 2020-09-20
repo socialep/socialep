@@ -17,6 +17,8 @@
     "expo-facebook": "~8.1.0",
     "expo-image-picker": "~8.1.0",
     "expo-location": "~8.1.0",
+    "expo-notifications": "~0.1.1",
+    "expo-permissions": "~8.1.0",
     "firebase": "7.9.0",
     "material-bread": "^0.2.6",
     "react": "16.9.0",

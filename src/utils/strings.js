@@ -68,6 +68,25 @@ export default strings = (language) => {
         signOut: "Desconectar",
         howItWorks: "Como Funciona",
         terms: "Termos",
+        //
+        backToProfile: "Voltar para perfil",
+        save: "Salvar",
+        changePhoto: "Alterar foto",
+        email: "Email",
+        name: "Nome",
+        gender: "Gênero",
+        nationality: "Nacionalidade",
+        bornDay: "Data de nascimento",
+        presentation: "Apresentação",
+        languages: "Idiomas",
+        personalData: "Dados Pessoais",
+        socialMedia: "Redes Sociais",
+        linkedin: "Linkedin",
+        facebook: "Facebook",
+        twitter: "Twitter",
+        graduation: "Formação",
+        institution: "Instituição de ensino",
+        course: "Curso",
       };
   }
 };

@@ -14,6 +14,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getOpps, uploadFavOpps } from "../../redux/actions/uiActions";
 
+//Util
+import { registerForPush } from "../../utils/pushNotfy";
+
 //view-carousel | view-agenda | more-vert
 
 const index = (props) => {
@@ -31,8 +34,9 @@ const index = (props) => {
 
   useEffect(() => {
     getOpps(interests);
+    registerForPush(user.id);
   }, []);
-  
+
   return (
     <View style={styles.container}>
       <CustomAppBar
