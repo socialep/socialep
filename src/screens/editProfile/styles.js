@@ -37,6 +37,22 @@ export default styles = StyleSheet.create({
     color: colorFocused,
     fontWeight: "500",
     alignSelf: "center",
-    marginVertical: 10,
+    marginBottom: 10,
+  },
+  sectionContaienr: {
+    padding: 20,
+    backgroundColor: colorLightGrayBg,
+  },
+  photoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    paddingVertical: 20,
+    backgroundColor: colorLightGrayBg,
+  },
+  userImg: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
   },
 });

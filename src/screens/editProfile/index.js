@@ -19,12 +19,18 @@ import { connect } from "react-redux";
 
 const index = (props) => {
   const {
-    ui: { strings },
+    ui: { strings, loading },
     user,
     navigation,
   } = props;
 
-  //7
+  const [form, setForm] = useState({
+    photo: { uri: user.photo },
+    name: user.name,
+    email: user.email,
+    changes: false,
+  });
+
   const [page, setPage] = useState(0);
 
   const handleNextPage = () => {
@@ -63,6 +69,7 @@ const index = (props) => {
           type="contained"
           color={colorPrimary}
           containerStyle={{ width: 200 }}
+          disabled={loading || !form.changes}
         />
       </View>
       <View style={styles.content}>
@@ -86,6 +93,19 @@ const index = (props) => {
           />
         </View>
         <Text style={styles.lblTitle}>{handleTitle(page)}</Text>
+        {page == 0 && (
+          <View style={styles.content}>
+            <View style={styles.photoContainer}>
+              <Image source={{ uri: form.photo.uri }} style={styles.userImg} />
+              <Button
+                text={strings.changePhoto}
+                type="outlined"
+                textColor={colorUnselected}
+                containerStyle={{ width: 200 }}
+              />
+            </View>
+          </View>
+        )}
       </View>
     </View>
   );

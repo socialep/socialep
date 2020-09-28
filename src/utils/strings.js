@@ -16,6 +16,7 @@ export default strings = (language) => {
         signInGoogle: "Conectar com Google",
         signInFacebook: "Conectar com Facebook",
         useAndPrivacy: "Uso e Privacidade",
+        hello: "Olá, ",
         //
         interests: "Interesses",
         environment: "Meio Ambiente",
