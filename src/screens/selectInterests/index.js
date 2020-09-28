@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { Button } from "material-bread";
 
 //REDUX
@@ -37,7 +37,7 @@ const index = (props) => {
 
   const {
     ui: { strings },
-    user: { id },
+    user: { id, name },
   } = props;
 
   const handleToggle = (label, value) => {
@@ -63,9 +63,12 @@ const index = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image style={styles.headerImg} source={congrats} />
-      <Text style={styles.lblHeader}>Olá, ANA</Text>
+      <Text style={styles.lblHeader}>
+        {strings.hello}
+        {name.split(" ")[0]}
+      </Text>
       <Text style={styles.lblSub}>{strings.howYWHelp}</Text>
       <View style={styles.buttonsList}>
         <InterestCard
@@ -113,7 +116,8 @@ const index = (props) => {
         color={colorPrimary}
         containerStyle={{ alignSelf: "center" }}
       />
-    </View>
+      <View style={{ height: 40 }} />
+    </ScrollView>
   );
 };
 
