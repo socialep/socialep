@@ -43,6 +43,8 @@ export default strings = (language) => {
         requirements: "Requisitos",
         periodAndDuration: "Período e Duração",
         socialProject: "Projeto Social",
+        orgInfo:
+          "Informações sobre a ONG, instituição ou projeto social que disponibilizou a vaga.",
         knowMore: "Saiba Mais",
         //
         disponibility: "Disponibilidade",
@@ -88,6 +90,9 @@ export default strings = (language) => {
         graduation: "Formação",
         institution: "Instituição de ensino",
         course: "Curso",
+        editPhoto: "Trocar foto",
+        //
+        typeSomething: "Digite algo",
       };
   }
 };

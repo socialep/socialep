@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { View, Image, Text } from "react-native";
-import { Button, IconButton } from "material-bread";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { Button } from "material-bread";
+import * as ImagePicker from "expo-image-picker";
 
-//Assets
-import profileIcon from "../../assets/profileIcon.png";
+//Components
+import TextInput from "../../components/TextInput";
+import MultilineTextField from "../../components/MultilineTextField";
+import Picker from "../../components/Picker";
 
 //Util
 import styles from "./styles";
-import {
-  colorCarousel,
-  colorPrimary,
-  colorUnselected,
-} from "../../utils/colors";
+import { colorUnselected, colorPrimary } from "../../utils/colors";
 
 //Redux
 import PropTypes from "prop-types";
@@ -24,35 +23,88 @@ const index = (props) => {
     navigation,
   } = props;
 
+  const states = [
+    { label: "teste", value: 2 },
+    { label: "teste", value: 1 },
+    { label: "teste", value: 3 },
+  ];
+  const [photoChanged, setPhotoChanged] = useState(false);
+  const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
+    name: "",
     photo: { uri: user.photo },
-    name: user.name,
-    email: user.email,
+    email: "",
+    gender: "",
+    nationality: "",
+    bornDay: "",
+    presentation: "",
+    linkedin: "",
+    facebook: "",
+    twitter: "",
+    course: "",
+    institution: "",
     changes: false,
   });
 
-  const [page, setPage] = useState(0);
-
-  const handleNextPage = () => {
-    if (page == 5) return setPage(0);
-    setPage(page + 1);
+  const handleChange = (key, value) => {
+    setForm({
+      ...form,
+      [key]: value,
+    });
   };
 
-  const handlePreviousPage = () => {
-    if (page == 0) return setPage(5);
-    setPage(page - 1);
+  const addPhoto = () => {
+    const options = {
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      allowsMultipleSelection: false,
+    };
+    ImagePicker.requestCameraRollPermissionsAsync()
+      .then((permission) => {
+        if (permission.granted)
+          return ImagePicker.launchImageLibraryAsync(options);
+        return false;
+      })
+      .then((res) => {
+        if (!res.cancelled) {
+          const aux = form.photos;
+          aux.push(res);
+          handleChange("photos", aux);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
-  const handleTitle = (page) => {
-    switch (page) {
-      default:
-        return strings.personalData;
-      case 4:
-        return strings.graduation;
-      case 5:
-        return strings.socialMedia;
-    }
+  const remPhoto = (item) => {
+    const aux = [];
+    form.photos.forEach((photo) => {
+      if (photo.uri !== item.uri) aux.push(photo);
+    });
+    handleChange("photos", aux);
   };
+
+  const chooseImage = () => {
+    const options = {
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      allowsMultipleSelection: false,
+    };
+    ImagePicker.requestCameraRollPermissionsAsync()
+      .then((permission) => {
+        if (permission.granted)
+          return ImagePicker.launchImageLibraryAsync(options);
+        return false;
+      })
+      .then((res) => {
+        if (!res.cancelled) {
+          setPhotoChanged(true);
+          handleChange("photo", res);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const validateData = () => {};
 
   return (
     <View style={styles.container}>
@@ -72,41 +124,98 @@ const index = (props) => {
           disabled={loading || !form.changes}
         />
       </View>
-      <View style={styles.content}>
-        <View style={styles.headerView}>
-          <IconButton
-            name="chevron-left"
-            size={34}
-            color={colorCarousel}
-            onPress={handlePreviousPage}
+      <ScrollView style={styles.content}>
+        <Image source={{ uri: form.photo.uri }} style={styles.imgUser} />
+        <TouchableOpacity
+          style={styles.editPhotoCotainer}
+          onPress={chooseImage}
+        >
+          <Text style={styles.lblEditPhoto}>{strings.editPhoto}</Text>
+        </TouchableOpacity>
+        <View style={styles.sectionContaienr}>
+          <Text style={styles.lblSection}>{strings.personalData}</Text>
+          <TextInput
+            value={form.name}
+            onValueChange={(value) => handleChange("name", value)}
+            label={strings.name}
+            autoCapitalize="words"
+            error={errors.name ? errors.name : null}
           />
-          <Image
-            source={profileIcon}
-            style={styles.profileIcon}
-            resizeMode="contain"
+          <TextInput
+            value={form.email}
+            onValueChange={(value) => handleChange("email", value)}
+            label={strings.email}
+            error={errors.email ? errors.email : null}
+            keyboardType="email-address"
           />
-          <IconButton
-            name="chevron-right"
-            size={34}
-            color={colorCarousel}
-            onPress={handleNextPage}
+          <TextInput
+            value={form.gender}
+            onValueChange={(value) => handleChange("gender", value)}
+            label={strings.gender}
+            error={errors.gender ? errors.gender : null}
+          />
+          <TextInput
+            value={form.nationality}
+            onValueChange={(value) => handleChange("nationality", value)}
+            label={strings.nationality}
+            error={errors.nationality ? errors.nationality : null}
+          />
+          <TextInput
+            value={form.bornDay}
+            onValueChange={(value) => handleChange("bornDay", value)}
+            label={strings.bornDay}
+            error={errors.bornDay ? errors.bornDay : null}
+            type="date"
+            keyboardType="numeric"
           />
         </View>
-        <Text style={styles.lblTitle}>{handleTitle(page)}</Text>
-        {page == 0 && (
-          <View style={styles.content}>
-            <View style={styles.photoContainer}>
-              <Image source={{ uri: form.photo.uri }} style={styles.userImg} />
-              <Button
-                text={strings.changePhoto}
-                type="outlined"
-                textColor={colorUnselected}
-                containerStyle={{ width: 200 }}
-              />
-            </View>
-          </View>
-        )}
-      </View>
+        <View style={styles.sectionContaienr}>
+          <Text style={styles.lblSection}>{strings.presentation}</Text>
+          <MultilineTextField
+            value={form.presentation}
+            onValueChange={(value) => handleChange("presentation", value)}
+            autoCapitalize="sentences"
+            error={errors.presentation ? errors.presentation : null}
+            placeholder={strings.typeSomething}
+          />
+        </View>
+        <View style={styles.sectionContaienr}>
+          <Text style={styles.lblSection}>{strings.socialMedia}</Text>
+          <TextInput
+            value={form.linkedin}
+            onValueChange={(value) => handleChange("linkedin", value)}
+            label={strings.linkedin}
+            error={errors.linkedin ? errors.linkedin : null}
+          />
+          <TextInput
+            value={form.facebook}
+            onValueChange={(value) => handleChange("facebook", value)}
+            label={strings.facebook}
+            error={errors.facebook ? errors.facebook : null}
+          />
+          <TextInput
+            value={form.twitter}
+            onValueChange={(value) => handleChange("twitter", value)}
+            label={strings.twitter}
+            error={errors.twitter ? errors.twitter : null}
+          />
+        </View>
+        <View style={styles.sectionContaienr}>
+          <Text style={styles.lblSection}>{strings.graduation}</Text>
+          <TextInput
+            value={form.institution}
+            onValueChange={(value) => handleChange("institution", value)}
+            label={strings.institution}
+            error={errors.institution ? errors.institution : null}
+          />
+          <TextInput
+            value={form.course}
+            onValueChange={(value) => handleChange("course", value)}
+            label={strings.course}
+            error={errors.course ? errors.course : null}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

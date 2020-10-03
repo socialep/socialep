@@ -51,6 +51,7 @@ const index = (props) => {
         duration,
         id,
         usersRegistered,
+        organization,
       },
     },
     user: { favoritesOpportunities },
@@ -201,15 +202,14 @@ const index = (props) => {
         </View>
         <View>
           <Text style={styles.lblName}>{strings.socialProject}</Text>
-          <Text style={styles.lblDes}>
-            Informações sobre a ONG, instituição ou projeto social que
-            disponibilizou a vaga. Lorem ipsum dolor sit amet, consetetur
-          </Text>
+          <Text style={styles.lblDes}>{strings.orgInfo}</Text>
           <Button
             type="contained"
             color={colorSignInGoogle}
             text={strings.knowMore}
-            onPress={() => navigation.push("Organization")}
+            onPress={() =>
+              navigation.push("Organization", { id: organization })
+            }
             containerStyle={styles.btnSubscribe}
             style={styles.btnSubscribeInside}
           />

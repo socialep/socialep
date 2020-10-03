@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text } from "react-native";
-import { TextField, Button } from "material-bread";
+import { Button } from "material-bread";
 
 //Util
 import styles from "./styles";
@@ -8,6 +8,8 @@ import { colorPrimary, colorSignInGoogle } from "../../utils/colors";
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";
+import TextInput from "../../components/TextInput";
+import MultilineTextField from "../../components/MultilineTextField";
 
 //Redux
 import PropTypes from "prop-types";
@@ -74,46 +76,30 @@ const index = (props) => {
         <Text style={styles.lblHeader}>{oppName}</Text>
         <View style={styles.askContainer}>
           <Text style={styles.lblAsk}>{strings.disponibility}</Text>
-          <TextField
-            multiline={true}
-            labelStyle={styles.labelStyle}
-            type={"outlined"}
-            label={strings.disponibilityLabel}
+          <MultilineTextField
             value={form.disponibility}
-            onChangeText={(value) => handleChange("disponibility", value)}
-            helperText={errors.disponibility}
-            helperTextStyle={{ color: "red" }}
-            textAlignVertical="top"
+            onValueChange={(value) => handleChange("disponibility", value)}
+            autoCapitalize="sentences"
+            error={errors.disponibility ? errors.disponibility : null}
+            placeholder={strings.typeSomething}
           />
         </View>
         <View style={styles.askContainer}>
           <Text style={styles.lblAsk}>{strings.experience}</Text>
-          <TextField
-            multiline={true}
-            labelStyle={styles.labelStyle}
-            style={{ height: 150 }}
-            type={"outlined"}
-            label={strings.experienceLabel}
+          <TextInput
             value={form.experience}
-            onChangeText={(value) => handleChange("experience", value)}
-            helperText={errors.experience}
-            helperTextStyle={{ color: "red" }}
-            textAlignVertical="top"
+            onValueChange={(value) => handleChange("experience", value)}
+            //label={strings.experienceLabel}
+            error={errors.experience ? errors.experience : null}
           />
         </View>
         <View style={styles.askContainer}>
           <Text style={styles.lblAsk}>{strings.presentationLetter}</Text>
-          <TextField
-            multiline={true}
-            labelStyle={styles.labelStyle}
-            style={{ height: 150 }}
-            type={"outlined"}
-            label={strings.presentationLabel}
+          <TextInput
             value={form.presentation}
-            onChangeText={(value) => handleChange("presentation", value)}
-            helperText={errors.presentation}
-            helperTextStyle={{ color: "red" }}
-            textAlignVertical="top"
+            onValueChange={(value) => handleChange("presentation", value)}
+            //label={strings.presentationLabel}
+            error={errors.presentation ? errors.presentation : null}
           />
         </View>
         <View style={styles.horizontalContainer}>

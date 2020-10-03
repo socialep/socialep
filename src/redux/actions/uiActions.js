@@ -87,7 +87,6 @@ export const getOrg = (id) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING });
   try {
     const { data } = await axiosInstance.post("/getOrgData", { id });
-    console.log(data);
     dispatch({ type: TOGGLE_LOADING });
     dispatch({ type: SET_ORG, payload: data });
   } catch (err) {
