@@ -47,7 +47,7 @@ const index = (props) => {
       />
       <View style={styles.container}>
         <>
-          <Image style={styles.header} source={profileHeader} />
+          <View style={styles.header} />
           <Avatar
             type="image"
             image={<Image source={{ uri: user.photo }} />}

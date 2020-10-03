@@ -26,7 +26,7 @@ const index = (props) => {
 
   return (
     <>
-      <Image style={styles.header} source={signInHeader} />
+      <View style={styles.header} />
       <View style={styles.container}>
         <Avatar
           type="image"

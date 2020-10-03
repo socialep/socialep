@@ -5,6 +5,7 @@ import {
   colorUnselected,
   colorLightGrayBg,
   fontColor,
+  colorPrimary,
 } from "../../utils/colors";
 
 export default styles = StyleSheet.create({
@@ -24,11 +25,13 @@ export default styles = StyleSheet.create({
     top: 70,
   },
   header: {
-    width: Dimensions.get("window").width,
-    height: (107 + 200) / 2,
+    width: 1500,
+    height: 1500,
     position: "absolute",
-    top: 0,
-    left: 0,
+    top: -1350,
+    left: -530,
+    backgroundColor: colorPrimary,
+    borderRadius: 1000,
   },
   lblName: {
     color: colorFocused,
