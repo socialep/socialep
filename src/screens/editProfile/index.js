@@ -15,34 +15,31 @@ import { colorUnselected, colorPrimary } from "../../utils/colors";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { editProfile } from "../../redux/actions/userActions";
 
 const index = (props) => {
   const {
     ui: { strings, loading },
     user,
     navigation,
+    editProfile,
   } = props;
 
-  const states = [
-    { label: "teste", value: 2 },
-    { label: "teste", value: 1 },
-    { label: "teste", value: 3 },
-  ];
   const [photoChanged, setPhotoChanged] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    name: "",
+    name: user.name,
     photo: { uri: user.photo },
-    email: "",
-    gender: "",
-    nationality: "",
-    bornDay: "",
-    presentation: "",
-    linkedin: "",
-    facebook: "",
-    twitter: "",
-    course: "",
-    institution: "",
+    email: user.email,
+    gender: user.gender,
+    nationality: user.nationality,
+    bornDay: user.bornDay,
+    presentation: user.presentation,
+    linkedin: user.linkedin,
+    facebook: user.facebook,
+    twitter: user.twitter,
+    course: user.course,
+    institution: user.institution,
     changes: false,
   });
 
@@ -50,37 +47,8 @@ const index = (props) => {
     setForm({
       ...form,
       [key]: value,
+      changes: true,
     });
-  };
-
-  const addPhoto = () => {
-    const options = {
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      allowsMultipleSelection: false,
-    };
-    ImagePicker.requestCameraRollPermissionsAsync()
-      .then((permission) => {
-        if (permission.granted)
-          return ImagePicker.launchImageLibraryAsync(options);
-        return false;
-      })
-      .then((res) => {
-        if (!res.cancelled) {
-          const aux = form.photos;
-          aux.push(res);
-          handleChange("photos", aux);
-        }
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const remPhoto = (item) => {
-    const aux = [];
-    form.photos.forEach((photo) => {
-      if (photo.uri !== item.uri) aux.push(photo);
-    });
-    handleChange("photos", aux);
   };
 
   const chooseImage = () => {
@@ -104,7 +72,49 @@ const index = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const validateData = () => {};
+  const validateData = () => {
+    let mErrors = {};
+
+    if (form.name.length == 0 || form.name.trim === "")
+      mErrors.name = strings.mustNotBeEmpty;
+
+    if (form.email.length == 0 || form.email.trim === "")
+      mErrors.email = strings.mustNotBeEmpty;
+
+    setErrors(mErrors);
+    if (Object.keys(mErrors).length > 0) return;
+
+    let changes = {};
+
+    if (form.name !== user.name) changes.name = form.name;
+    if (form.email !== user.email) changes.email = form.email;
+    if (form.gender !== user.gender) changes.gender = form.gender;
+    if (form.nationality !== user.nationality)
+      changes.nationality = form.nationality;
+    if (form.bornDay !== user.bornDay) changes.bornDay = form.bornDay;
+    if (form.presentation !== user.presentation)
+      changes.presentation = form.presentation;
+    if (form.linkedin !== user.linkedin) changes.linkedin = form.linkedin;
+    if (form.facebook !== user.facebook) changes.facebook = form.facebook;
+    if (form.twitter !== user.twitter) changes.twitter = form.twitter;
+    if (form.course !== user.course) changes.course = form.course;
+    if (form.institution !== user.institution)
+      changes.institution = form.institution;
+
+    const photoForm = photoChanged ? new FormData() : null;
+
+    if (photoChanged)
+      photoForm.append("image", {
+        name: "profile.jpg",
+        type: "image/jpg",
+        uri:
+          Platform.OS === "android"
+            ? form.photo.uri
+            : form.photo.uri.replace("file:/", ""),
+      });
+
+    editProfile(photoForm, user.id, changes);
+  };
 
   return (
     <View style={styles.container}>
@@ -114,6 +124,7 @@ const index = (props) => {
           type="outlined"
           textColor={colorUnselected}
           containerStyle={{ width: 200 }}
+          disabled={loading}
           onPress={() => navigation.pop()}
         />
         <Button
@@ -122,6 +133,7 @@ const index = (props) => {
           color={colorPrimary}
           containerStyle={{ width: 200 }}
           disabled={loading || !form.changes}
+          onPress={validateData}
         />
       </View>
       <ScrollView style={styles.content}>
@@ -225,11 +237,14 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  editProfile,
+};
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  editProfile: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

@@ -124,3 +124,27 @@ export const cancelRegistration = (reqData) => async (dispatch) => {
     dispatch({ type: TOGGLE_LOADING });
   }
 };
+
+export const editProfile = (photoForm, id, data) => async (dispatch) => {
+  dispatch({ type: TOGGLE_LOADING });
+  try {
+    if (photoForm) await axiosInstance.post(`/changePhoto/${id}`, photoForm);
+
+    await axiosInstance.post(`/editProfile/${id}`, data);
+
+    const {
+      data: { user },
+    } = await axiosInstance.post("/getUser", { uid: id });
+
+    dispatch({ type: SET_USER, payload: user });
+
+    dispatch({ type: TOGGLE_LOADING });
+  } catch (err) {
+    const {
+      data: { user },
+    } = await axiosInstance.post("/getUser", { uid: id });
+
+    dispatch({ type: SET_USER, payload: user });
+    dispatch({ type: TOGGLE_LOADING });
+  }
+};
