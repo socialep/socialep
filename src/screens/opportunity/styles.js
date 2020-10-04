@@ -82,7 +82,7 @@ export default styles = StyleSheet.create({
     backgroundColor: colorLightGrayBg,
     padding: 10,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   lblAddress: {
     fontSize: 16,

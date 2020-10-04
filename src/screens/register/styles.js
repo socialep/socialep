@@ -35,6 +35,6 @@ export default styles = StyleSheet.create({
   horizontalContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 20,
+    marginVertical: 20,
   },
 });

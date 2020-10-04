@@ -3,6 +3,7 @@ import {
   colorFocused,
   colorInterestCardBg,
   colorLightGrayBg,
+  colorPrimary,
 } from "../../utils/colors";
 
 export default styles = StyleSheet.create({
@@ -40,19 +41,38 @@ export default styles = StyleSheet.create({
     marginBottom: 10,
   },
   sectionContaienr: {
+    backgroundColor: colorLightGrayBg,
     padding: 20,
-    backgroundColor: colorLightGrayBg,
-  },
-  photoContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    paddingVertical: 20,
-    backgroundColor: colorLightGrayBg,
+    marginBottom: 10,
   },
   userImg: {
     width: 100,
     height: 100,
     borderRadius: 100,
+  },
+  imgUser: {
+    alignSelf: "center",
+    width: 120,
+    height: 120,
+    marginTop: 20,
+    borderRadius: 100,
+    borderWidth: 3,
+    borderColor: colorPrimary,
+  },
+  editPhotoCotainer: {
+    marginVertical: 10,
+    width: 100,
+    alignSelf: "center",
+  },
+  lblEditPhoto: {
+    fontSize: 14,
+    color: colorPrimary,
+    alignSelf: "center",
+  },
+  lblSection: {
+    fontSize: 20,
+    color: colorFocused,
+    marginTop: 10,
+    marginBottom: 20,
   },
 });

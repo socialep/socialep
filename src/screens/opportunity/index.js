@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, ScrollView, Text, Image } from "react-native";
 import { IconButton, Icon, Button } from "material-bread";
 import { SliderBox } from "react-native-image-slider-box";
@@ -51,6 +51,7 @@ const index = (props) => {
         duration,
         id,
         usersRegistered,
+        organization,
       },
     },
     user: { favoritesOpportunities },
@@ -64,11 +65,17 @@ const index = (props) => {
     },
   } = props;
 
-  const isRegistered = usersRegistered.includes(user.id);
+  const [isRegistered, setRegistered] = useState(
+    usersRegistered ? usersRegistered.includes(user.id) : false
+  );
 
   useEffect(() => {
     setOpp(opp);
   }, []);
+
+  useEffect(() => {
+    setRegistered(usersRegistered ? usersRegistered.includes(user.id) : false);
+  }, [usersRegistered]);
 
   return (
     <View style={styles.container}>
@@ -103,7 +110,10 @@ const index = (props) => {
           text={isRegistered ? strings.cancelRegister : strings.wantToSubscribe}
           onPress={() =>
             isRegistered
-              ? cancelRegistration({ userId: user.id, oppId: id })
+              ? cancelRegistration(
+                  { userId: user.id, oppId: id },
+                  user.interests
+                )
               : navigation.push("Register", { oppId: id, oppName: name })
           }
           containerStyle={styles.btnSubscribe}
@@ -201,15 +211,14 @@ const index = (props) => {
         </View>
         <View>
           <Text style={styles.lblName}>{strings.socialProject}</Text>
-          <Text style={styles.lblDes}>
-            Informações sobre a ONG, instituição ou projeto social que
-            disponibilizou a vaga. Lorem ipsum dolor sit amet, consetetur
-          </Text>
+          <Text style={styles.lblDes}>{strings.orgInfo}</Text>
           <Button
             type="contained"
             color={colorSignInGoogle}
             text={strings.knowMore}
-            onPress={() => navigation.push("Organization")}
+            onPress={() =>
+              navigation.push("Organization", { id: organization })
+            }
             containerStyle={styles.btnSubscribe}
             style={styles.btnSubscribeInside}
           />
