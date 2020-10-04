@@ -66,7 +66,7 @@ const index = (props) => {
       },
     };
 
-    registerForOpp(formData, navigation);
+    registerForOpp(formData, navigation, user.interests);
   };
 
   return (
