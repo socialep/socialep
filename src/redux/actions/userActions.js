@@ -42,18 +42,22 @@ export const signInGoogle = () => async (dispatch) => {
 
 export const signInFaceBook = () => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING_USER });
-  await Facebook.initializeAsync("389365785280873");
+  try {
+    await Facebook.initializeAsync("389365785280873");
 
-  const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-    permissions: ["public_profile", "email"],
-  });
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["public_profile", "email"],
+    });
 
-  if (type === "success") {
-    const credential = firebase.auth.FacebookAuthProvider.credential(token);
-    await firebase.auth().signInWithCredential(credential);
+    if (type === "success") {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+      await firebase.auth().signInWithCredential(credential);
+    }
+    dispatch({ type: TOGGLE_LOADING_USER });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: TOGGLE_LOADING_USER });
   }
-
-  dispatch({ type: TOGGLE_LOADING_USER });
 };
 
 export const getUserData = (userData) => async (dispatch) => {
