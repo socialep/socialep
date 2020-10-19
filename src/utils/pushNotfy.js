@@ -31,7 +31,7 @@ export const registerForPush = async (id) => {
         return;
       }
       const token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(token);
+      //console.log(token);
       await axiosInstance.post("/uploadPushToken", reqData);
     } else {
       alert("Must use physical device for Push Notifications");
