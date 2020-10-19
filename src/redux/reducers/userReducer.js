@@ -19,6 +19,20 @@ const initialState = {
   interests: {},
   favoritesOpportunities: [],
   accountFilled: false,
+  filter: {
+    interests: {
+      animals: true,
+      education: true,
+      environment: true,
+      health: true,
+      human_rights: true,
+      sports: true,
+    },
+    modalities: {
+      remote: true,
+      presential: true,
+    },
+  },
 };
 
 export default function (state = initialState, action) {

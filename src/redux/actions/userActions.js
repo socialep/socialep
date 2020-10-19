@@ -3,6 +3,7 @@ import * as firebase from "firebase";
 import * as Facebook from "expo-facebook";
 import * as GoogleSignIn from "expo-google-sign-in";
 import { getOpps } from "./uiActions";
+import { AsyncStorage } from "react-native";
 import {
   TOGGLE_LOADING_USER,
   SET_LOGGED,
@@ -60,6 +61,10 @@ export const signInFaceBook = () => async (dispatch) => {
   }
 };
 
+export const saveFilter = (filter) => async (dispatch) => {
+  AsyncStorage.setItem("filter", JSON.stringify(filter));
+};
+
 export const getUserData = (userData) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING_USER });
   try {
@@ -67,7 +72,34 @@ export const getUserData = (userData) => async (dispatch) => {
       data: { interestsFilled, user },
     } = await axiosInstance.post("/getUser", userData);
 
-    dispatch({ type: SET_USER, payload: user });
+    let filter = await AsyncStorage.getItem("filter");
+    filter = JSON.parse(filter);
+
+    if (filter === null)
+      filter = {
+        interests: interestsFilled
+          ? { ...user.interests }
+          : {
+              animals: true,
+              education: true,
+              environment: true,
+              health: true,
+              human_rights: true,
+              sports: true,
+            },
+        modalities: {
+          remote: true,
+          presential: true,
+        },
+      };
+
+    dispatch({
+      type: SET_USER,
+      payload: {
+        ...user,
+        filter,
+      },
+    });
     dispatch({ type: SET_LOGGED, payload: true });
     dispatch({ type: SET_INTERESTS_FILLED, payload: interestsFilled });
     dispatch({ type: TOGGLE_LOADING_USER });

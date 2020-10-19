@@ -45,16 +45,10 @@ const RightMenu = (props) => {
     open,
     onClose,
     ui: { strings },
-    user: { interests },
+    user,
   } = props;
 
-  const [filter, setFilter] = useState({
-    interests: interests,
-    modalities: {
-      presential: false,
-      remote: true,
-    },
-  });
+  const [filter, setFilter] = useState(user.filter);
 
   const [aux, setAux] = useState(filter);
 

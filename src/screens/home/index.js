@@ -14,6 +14,7 @@ import RightMenu from "../../components/RightMenu";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getOpps, uploadFavOpps } from "../../redux/actions/uiActions";
+import { saveFilter } from "../../redux/actions/userActions";
 
 //Util
 import { registerForPush } from "../../utils/pushNotfy";
@@ -28,6 +29,7 @@ const index = (props) => {
     navigation,
     getOpps,
     uploadFavOpps,
+    saveFilter,
   } = props;
 
   const [mode, setMode] = useState("carrousel");
@@ -61,6 +63,7 @@ const index = (props) => {
         onClose={(changes) => {
           if (changes != false) {
             getOpps(changes.interests);
+            saveFilter(changes);
           }
           setMenu(false);
         }}
@@ -106,6 +109,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getOpps,
   uploadFavOpps,
+  saveFilter,
 };
 
 index.propTypes = {
@@ -113,6 +117,7 @@ index.propTypes = {
   user: PropTypes.object.isRequired,
   getOpps: PropTypes.func.isRequired,
   uploadFavOpps: PropTypes.func.isRequired,
+  saveFilter: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);
