@@ -22,7 +22,7 @@ import OpportunityListItem from "../../components/OpportunityListItem";
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getOrg } from "../../redux/actions/uiActions";
+import { getOrg, uploadFavOpps } from "../../redux/actions/uiActions";
 
 //Assets
 import animal from "../../assets/animal.svg";
@@ -38,6 +38,8 @@ const index = (props) => {
   const {
     navigation,
     getOrg,
+    user: { favoritesOpportunities },
+    user,
     ui: {
       strings,
       loading,
@@ -56,6 +58,7 @@ const index = (props) => {
     route: {
       params: { id },
     },
+    uploadFavOpps,
   } = props;
 
   useEffect(() => {
@@ -192,7 +195,9 @@ const index = (props) => {
               <OpportunityListItem
                 key={index}
                 opportunity={opp}
-                handleFavPressed={() => console.log("favorited")}
+                handleFavPressed={() =>
+                  uploadFavOpps(opp.id, favoritesOpportunities, user.id)
+                }
                 btnPressed={() => navigation.push("Opportunity", { opp })}
               />
             ))}
@@ -205,15 +210,18 @@ const index = (props) => {
 
 const mapStateToProps = (state) => ({
   ui: state.ui,
+  user: PropTypes.object.isRequired,
 });
 
 const mapDispatchToProps = {
   getOrg,
+  uploadFavOpps,
 };
 
 index.propTypes = {
   ui: PropTypes.object.isRequired,
   getOrg: PropTypes.func.isRequired,
+  uploadFavOpps: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);
