@@ -44,7 +44,7 @@ export default styles = StyleSheet.create({
     width: "100%",
   },
   lblDes: {
-    fontSize: 24,
+    fontSize: 19,
     color: fontColor,
     textAlign: "center",
     marginTop: 5,
@@ -80,15 +80,18 @@ export default styles = StyleSheet.create({
   addressContainer: {
     flexDirection: "row",
     backgroundColor: colorLightGrayBg,
-    padding: 10,
     alignItems: "center",
     justifyContent: "flex-start",
+    marginTop: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
   },
   lblAddress: {
     fontSize: 16,
     color: fontColor,
     marginLeft: 10,
     fontWeight: "600",
+    width: "87%",
   },
   periodContainer: {
     marginVertical: 10,

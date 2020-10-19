@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   lblDes: {
-    fontSize: 27,
+    fontSize: 19,
     color: fontColor,
     textAlign: "center",
     marginVertical: 5,

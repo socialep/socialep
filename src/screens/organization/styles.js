@@ -29,7 +29,7 @@ export default styles = StyleSheet.create({
     marginVertical: 10,
   },
   lblDes: {
-    fontSize: 24,
+    fontSize: 19,
     color: fontColor,
     textAlign: "center",
     marginTop: 5,
@@ -38,6 +38,7 @@ export default styles = StyleSheet.create({
   },
   interestsContainer: {
     marginTop: 16,
+    marginBottom: 10,
     backgroundColor: colorLightGrayBg,
     padding: 10,
     paddingHorizontal: 20,

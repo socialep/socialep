@@ -42,7 +42,7 @@ const index = (props) => {
       <CustomAppBar
         actions={[
           mode === "carrousel" ? "view-carousel" : "view-agenda",
-          "more-vert",
+          "filter-list",
         ]}
         onSecondaryAction={() =>
           setMode(mode === "carrousel" ? "agenda" : "carrousel")
