@@ -1,4 +1,5 @@
-import { Notifications } from "expo";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { Platform } from "react-native";
 
@@ -6,22 +7,35 @@ import axiosInstance from "../config/axiosInstance";
 
 export const registerForPush = async (id) => {
   try {
-    const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+      }),
+    });
 
-    if (!permission.granted) return;
-
-    const token = await Notifications.getExpoPushTokenAsync();
-
-    //const token = (await Notifications.getExpoPushTokenAsync()).data;
-
-    const reqData = {
-      id,
-      token,
-    };
-
-    console.log(token);
-
-    const { data } = await axiosInstance.post("/uploadPushToken", reqData);
+    if (Constants.isDevice) {
+      const { status: existingStatus } = await Permissions.getAsync(
+        Permissions.NOTIFICATIONS
+      );
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Permissions.askAsync(
+          Permissions.NOTIFICATIONS
+        );
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+      await axiosInstance.post("/uploadPushToken", reqData);
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
 
     if (Platform.OS === "android") {
       Notifications.setNotificationChannelAsync("default", {

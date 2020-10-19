@@ -37,7 +37,14 @@
         }
       },
       "package": "com.socialEpoque.socialEp",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true
+    },
+    "notification": {
+      "androidMode": "default",
+      "icon": "./src/assets/ntfIcon.png",
+      "iosDisplayInForeground": true,
+      "color": "#6C63FF"
     }
   }
 }

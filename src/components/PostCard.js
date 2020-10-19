@@ -13,7 +13,7 @@ import {
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { uploadPostFavs } from "../redux/actions/uiActions";
+import { likePost } from "../redux/actions/uiActions";
 
 const styles = StyleSheet.create({
   container: {
@@ -58,29 +58,8 @@ const PostCard = (props) => {
     user,
     post: { body, createdAt, id, image, likes, orgId, orgLogo, orgName },
     onPress,
-    uploadPostFavs,
+    likePost,
   } = props;
-
-  const [likesList, setLikesList] = useState(likes);
-
-  const handleLiked = () => {
-    const aux = [];
-    if (likesList.includes(user.id)) {
-      likesList.forEach((userId) =>
-        userId === user.id ? {} : aux.push(userId)
-      );
-    } else {
-      likesList.forEach((userId) => aux.push(userId));
-      aux.push(user.id);
-    }
-    const reqData = {
-      likes: aux,
-      id: id,
-    };
-
-    setLikesList(aux);
-    uploadPostFavs(reqData);
-  };
 
   return (
     <View style={styles.container}>
@@ -106,10 +85,10 @@ const PostCard = (props) => {
         <IconButton
           name="thumb-up"
           size={36}
-          color={likesList.includes(user.id) ? colorPrimary : colorUnselected}
-          onPress={handleLiked}
+          color={likes.includes(user.id) ? colorPrimary : colorUnselected}
+          onPress={() => likePost(user.id, id)}
         />
-        <Text style={styles.lblHeader}>{likesList.length}</Text>
+        <Text style={styles.lblHeader}>{likes.length}</Text>
       </View>
       <View style={styles.divider}>
         <Divider />
@@ -124,12 +103,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  uploadPostFavs,
+  likePost,
 };
 
 PostCard.propTypes = {
   user: PropTypes.object.isRequired,
-  uploadPostFavs: PropTypes.func.isRequired,
+  likePost: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostCard);
