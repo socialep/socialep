@@ -33,7 +33,6 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await axiosInstance.get("/getPosts");
     dispatch({ type: SET_POSTS, payload: data });
     dispatch({ type: TOGGLE_LOADING });
-    console.log(data);
   } catch (err) {
     console.log(err);
     dispatch({ type: TOGGLE_LOADING });
