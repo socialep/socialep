@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { View, ScrollView } from "react-native";
 import styles from "./styles";
 
@@ -19,9 +20,11 @@ const index = (props) => {
     getPosts,
   } = props;
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getPosts();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>

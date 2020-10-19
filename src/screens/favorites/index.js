@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { View, ScrollView } from "react-native";
 import styles from "./styles";
 
@@ -17,16 +18,20 @@ import { getFavs, uploadFavOpps } from "../../redux/actions/uiActions";
 const index = (props) => {
   const {
     ui: { strings, favorites, loading },
-    user: { favoritesOpportunities },
     user,
     navigation,
     getFavs,
     uploadFavOpps,
   } = props;
 
+  const [favoritesOpportunities, setFavOpps] = useState(
+    user.favoritesOpportunities
+  );
+
   useEffect(() => {
-    getFavs(favoritesOpportunities);
-  }, []);
+    getFavs(user.favoritesOpportunities);
+    setFavOpps(user.favoritesOpportunities);
+  }, [user.favoritesOpportunities]);
 
   return (
     <View style={styles.container}>

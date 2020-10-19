@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { View, ScrollView } from "react-native";
 import styles from "./styles";
 
@@ -33,9 +34,14 @@ const index = (props) => {
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {
-    getOpps(interests);
     registerForPush(user.id);
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getOpps(interests);
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
