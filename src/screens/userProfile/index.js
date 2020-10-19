@@ -71,8 +71,8 @@ const index = (props) => {
           {user.interests.animals && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={animal}
                 fill={colorUnselected}
               />
@@ -82,8 +82,8 @@ const index = (props) => {
           {user.interests.education && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={gradHat}
                 fill={colorUnselected}
               />
@@ -93,8 +93,8 @@ const index = (props) => {
           {user.interests.environment && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={leaf}
                 fill={colorUnselected}
               />
@@ -104,8 +104,8 @@ const index = (props) => {
           {user.interests.health && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={pills}
                 fill={colorUnselected}
               />
@@ -115,8 +115,8 @@ const index = (props) => {
           {user.interests.human_rights && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={hand}
                 fill={colorUnselected}
               />
@@ -126,8 +126,8 @@ const index = (props) => {
           {user.interests.sports && (
             <View style={styles.iconContainer}>
               <SvgUri
-                width={50}
-                height={50}
+                width={40}
+                height={40}
                 source={ball}
                 fill={colorUnselected}
               />

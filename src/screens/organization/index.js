@@ -108,8 +108,8 @@ const index = (props) => {
               {interests.animals && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={animal}
                     fill={colorUnselected}
                   />
@@ -119,8 +119,8 @@ const index = (props) => {
               {interests.education && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={gradHat}
                     fill={colorUnselected}
                   />
@@ -130,8 +130,8 @@ const index = (props) => {
               {interests.environment && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={leaf}
                     fill={colorUnselected}
                   />
@@ -141,8 +141,8 @@ const index = (props) => {
               {interests.health && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={pills}
                     fill={colorUnselected}
                   />
@@ -152,8 +152,8 @@ const index = (props) => {
               {interests.human_rights && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={hand}
                     fill={colorUnselected}
                   />
@@ -163,8 +163,8 @@ const index = (props) => {
               {interests.sports && (
                 <View style={styles.iconContainer}>
                   <SvgUri
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     source={ball}
                     fill={colorUnselected}
                   />
@@ -180,11 +180,11 @@ const index = (props) => {
               inactiveDotColor={colorPrimaryDarker}
             />
             <View style={styles.addressContainer}>
-              <Icon name="location-on" size={50} color={colorUnselected} />
+              <Icon name="location-on" size={40} color={colorUnselected} />
               <Text style={styles.lblAddress}>{address}</Text>
             </View>
             <View style={styles.addressContainer}>
-              <Icon name="phone" size={50} color={colorUnselected} />
+              <Icon name="phone" size={40} color={colorUnselected} />
               <Text style={styles.lblAddress}>{phone}</Text>
             </View>
             <View style={{ marginTop: 5 }} />
