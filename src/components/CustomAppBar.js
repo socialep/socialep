@@ -31,7 +31,7 @@ const CustomAppBar = (props) => {
         <IconButton
           name={mode}
           color={colorUnselected}
-          size={32}
+          size={26}
           onPress={props.onNavigation}
         />
       )}
@@ -43,7 +43,7 @@ const CustomAppBar = (props) => {
               key={index}
               name={action}
               color={colorUnselected}
-              size={32}
+              size={26}
               onPress={
                 index == 0 ? props.onSecondaryAction : props.onThirdAction
               }
