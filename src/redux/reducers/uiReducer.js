@@ -12,6 +12,7 @@ import {
   SET_ORG,
   SET_OPP,
   SET_USERS_REGISTERED,
+  UPDATE_POST_LIKES,
 } from "../types";
 
 const initialState = {
@@ -67,6 +68,17 @@ export default function (state = initialState, action) {
   switch (action.type) {
     default:
       return state;
+    case UPDATE_POST_LIKES: {
+      const { likes, postId } = action.payload;
+      const aux = [];
+
+      state.posts.map((post) => {
+        if (post.id === postId) aux.push({ ...post, likes });
+        else aux.push(post);
+      });
+
+      return { ...state, posts: aux };
+    }
     case SET_USERS_REGISTERED:
       return {
         ...state,

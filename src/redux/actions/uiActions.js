@@ -8,6 +8,7 @@ import {
   SET_FAVS_LIST,
   SET_ORG,
   SET_OPP,
+  UPDATE_POST_LIKES,
 } from "../types";
 
 export const setStrings = (data) => (dispatch) => {
@@ -32,6 +33,7 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await axiosInstance.get("/getPosts");
     dispatch({ type: SET_POSTS, payload: data });
     dispatch({ type: TOGGLE_LOADING });
+    console.log(data);
   } catch (err) {
     console.log(err);
     dispatch({ type: TOGGLE_LOADING });
@@ -75,14 +77,6 @@ export const uploadFavOpps = (oppId, favOpps, userId) => async (dispatch) => {
   }
 };
 
-export const uploadPostFavs = (reqData) => async (dispatch) => {
-  try {
-    await axiosInstance.post("/uploadOppLikes", reqData);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const getOrg = (id) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING });
   try {
@@ -97,4 +91,16 @@ export const getOrg = (id) => async (dispatch) => {
 
 export const setOpp = (opp) => async (dispatch) => {
   dispatch({ type: SET_OPP, payload: opp });
+};
+
+export const likePost = (userId, postId) => async (dispatch) => {
+  try {
+    const { data } = await axiosInstance.post("/likePost", { userId, postId });
+    dispatch({
+      type: UPDATE_POST_LIKES,
+      payload: { likes: data, postId: postId },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };

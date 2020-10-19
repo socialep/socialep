@@ -18,3 +18,4 @@ export const SET_FAVS = "SET_FAVS";
 export const SET_ORG = "SET_ORG";
 export const SET_OPP = "SET_OPP";
 export const SET_USERS_REGISTERED = "SET_USERS_REGISTERED";
+export const UPDATE_POST_LIKES = "UPDATE_POST_LIKES";
