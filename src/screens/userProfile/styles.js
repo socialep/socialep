@@ -35,21 +35,20 @@ export default styles = StyleSheet.create({
   },
   lblName: {
     color: colorFocused,
-    fontSize: 26,
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "700",
   },
   nameEmail: {
-    marginVertical: 20,
+    marginTop: 20,
     marginHorizontal: 30,
   },
   lblEmail: {
     textAlign: "center",
-    fontSize: 21,
+    fontSize: 15,
     color: colorUnselected,
   },
   interestsContainer: {
-    marginTop: 16,
     backgroundColor: colorLightGrayBg,
     padding: 10,
     paddingHorizontal: 20,
@@ -61,12 +60,38 @@ export default styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 12,
     width: "50%",
+    paddingHorizontal: 6,
   },
   lblInterest: {
-    fontSize: 20,
+    fontSize: 15,
     color: fontColor,
-    marginLeft: 10,
-    width: "60%",
+    textAlign: "center",
+    flex: 1,
+  },
+  lblSection: {
+    fontSize: 29,
+    color: fontColor,
+    textAlign: "center",
+    width: "100%",
+    fontWeight: "100",
+    marginBottom: 10,
+  },
+  sectionContainer: {
+    backgroundColor: colorLightGrayBg,
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    alignItems: "center",
+  },
+  lbl: {
+    fontSize: 15,
+    color: fontColor,
     textAlign: "center",
   },
+  lblPresentation:{
+    fontSize: 20,
+    color: fontColor,
+    textAlign: "center",
+  }
 });

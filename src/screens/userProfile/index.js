@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, ScrollView } from "react-native";
 import { Avatar, Divider } from "material-bread";
 import SvgUri from "react-native-svg-uri-reborn";
 
@@ -44,7 +44,7 @@ const index = (props) => {
         open={menu}
         onClose={() => setMenu(false)}
       />
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <>
           <View style={styles.header} />
           <Avatar
@@ -65,8 +65,18 @@ const index = (props) => {
           <Text style={styles.lblName}>{user.name}</Text>
           <Text style={styles.lblEmail}>{user.email}</Text>
           <Divider />
+          <Text style={styles.lblEmail}>
+            {user.gender}, {user.nationality}
+          </Text>
         </View>
+        {user.presentation !== "" && (
+          <View style={{ padding: 20 }}>
+            {/* <Text style={styles.lblSection}>{strings.presentation}</Text> */}
+            <Text style={styles.lblPresentation}>{user.presentation}</Text>
+          </View>
+        )}
         <View style={styles.interestsContainer}>
+          <Text style={styles.lblSection}>{strings.interests}</Text>
           {user.interests.animals && (
             <View style={styles.iconContainer}>
               <SvgUri
@@ -134,7 +144,23 @@ const index = (props) => {
             </View>
           )}
         </View>
-      </View>
+
+        {user.languages.length > 0 && (
+          <View style={styles.sectionContainer}>
+            <Text style={styles.lblSection}>{strings.languages}</Text>
+            <Text style={styles.lbl}>{user.languages}</Text>
+          </View>
+        )}
+        {user.institution !== "" && (
+          <View style={styles.sectionContainer}>
+            <Text style={styles.lblSection}>{strings.graduation}</Text>
+            <Text style={{ ...styles.lbl, fontWeight: "700", marginBottom: 3 }}>
+              {user.institution}
+            </Text>
+            <Text style={styles.lbl}>{user.course}</Text>
+          </View>
+        )}
+      </ScrollView>
     </View>
   );
 };

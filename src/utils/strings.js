@@ -24,6 +24,7 @@ export default strings = (language) => {
         useAndPrivacy: "Uso e Privacidade",
         hello: "Olá, ",
         //
+        interestsBy: "Se Interessa Por",
         interests: "Interesses",
         environment: "Meio Ambiente",
         education: "Educação",
