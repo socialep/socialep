@@ -32,7 +32,7 @@ export default TabNav = (props) => {
       let iconName;
 
       if (route.name === "home") iconName = "explore";
-      else if (route.name === "news") iconName = "forum";
+      else if (route.name === "news") iconName = "flag";
       else if (route.name === "favorites") iconName = "favorite";
       else if (route.name === "userProfile") iconName = "person";
 
