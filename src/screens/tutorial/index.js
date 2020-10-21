@@ -60,7 +60,7 @@ const index = ({ ui: { strings }, setFirstTime, navigation }) => {
       case 2:
         return strings.itsThis;
       case 3:
-        return "";
+        return null;
     }
   };
 
@@ -71,7 +71,7 @@ const index = ({ ui: { strings }, setFirstTime, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.img} source={handleImage()} resizeMode="contain" />
+      <Image style={styles.img} source={handleImage()} resizeMode="cover" />
       <View style={{ flex: 1, justifyContent: "center" }}>
         <Text style={styles.lblTitle}>{handleTitle()}</Text>
         <Text style={styles.lblDes}>{handleDes()}</Text>

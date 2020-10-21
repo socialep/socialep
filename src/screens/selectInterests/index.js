@@ -9,12 +9,12 @@ import { updateInterests } from "../../redux/actions/userActions";
 
 //Assets
 import congrats from "../../assets/congrats.png";
-import animal from "../../assets/animal.svg";
-import hand from "../../assets/hand.svg";
-import ball from "../../assets/ball.svg";
-import leaf from "../../assets/leaf.svg";
-import pills from "../../assets/pills.svg";
-import gradHat from "../../assets/gradHat.svg";
+import animal from "../../assets/interests/animal.svg";
+import hand from "../../assets/interests/hand.svg";
+import ball from "../../assets/interests/ball.svg";
+import leaf from "../../assets/interests/leaf.svg";
+import pills from "../../assets/interests/pills.svg";
+import gradHat from "../../assets/interests/gradHat.svg";
 
 //Util
 import styles from "./styles";
@@ -26,7 +26,7 @@ import InterestCard from "../../components/InterestCard";
 const index = (props) => {
   const [interests, setInterests] = useState({
     animals: false,
-    humanRights: false,
+    human_rights: false,
     sports: false,
     environment: false,
     health: false,
@@ -51,7 +51,7 @@ const index = (props) => {
     setError(null);
     if (
       !interests.animals &&
-      !interests.humanRights &&
+      !interests.human_rights &&
       !interests.sports &&
       !interests.environment &&
       !interests.health &&
@@ -78,10 +78,10 @@ const index = (props) => {
           selected={interests.animals}
         />
         <InterestCard
-          onPress={(selected) => handleToggle("humanRights", selected)}
+          onPress={(selected) => handleToggle("human_rights", selected)}
           icon={hand}
           label={strings.humanRights}
-          selected={interests.humanRights}
+          selected={interests.human_rights}
         />
         <InterestCard
           onPress={(selected) => handleToggle("sports", selected)}

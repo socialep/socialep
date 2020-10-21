@@ -4,13 +4,12 @@ import { Avatar, Divider } from "material-bread";
 import SvgUri from "react-native-svg-uri-reborn";
 
 //Assets
-import animal from "../../assets/animal.svg";
-import hand from "../../assets/hand.svg";
-import ball from "../../assets/ball.svg";
-import leaf from "../../assets/leaf.svg";
-import pills from "../../assets/pills.svg";
-import gradHat from "../../assets/gradHat.svg";
-import profileHeader from "../../assets/profileHeader.png";
+import animal from "../../assets/interests/animal.svg";
+import hand from "../../assets/interests/hand.svg";
+import ball from "../../assets/interests/ball.svg";
+import leaf from "../../assets/interests/leaf.svg";
+import pills from "../../assets/interests/pills.svg";
+import gradHat from "../../assets/interests/gradHat.svg";
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";

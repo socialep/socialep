@@ -4,10 +4,11 @@ import { View, Image, Text } from "react-native";
 //Material Bread
 import { Button, Avatar } from "material-bread";
 
-//UTIL
+//Assets
 import styles from "./styles";
 import logo from "../../assets/logo.png";
-import signInHeader from "../../assets/signInHeader.png";
+
+//UTIL
 import {
   colorSignInHeader,
   colorSignInGoogle,
