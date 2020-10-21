@@ -52,11 +52,10 @@ export default styles = StyleSheet.create({
     width: "50%",
   },
   lblInterest: {
-    fontSize: 20,
+    fontSize: 15,
     color: fontColor,
-    marginLeft: 10,
-    width: "60%",
     textAlign: "center",
+    flex: 1,
   },
   addressContainer: {
     flexDirection: "row",
