@@ -3,15 +3,21 @@ export default strings = (language) => {
     default:
       return {
         welcome: "BEM VINDO!",
-        carousel1:
-          "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor",
+        //
+        tutorial1:
+          "Encontre instituições que precisam dos seus super poderes e contribua com causas que você ama.",
         beAHero: "SEJA UM HERÓI",
-        findInst:
-          "Encontre instituições que precisam dos seus super poderes, e contribua com causas que você ama.",
-        next: "Próximo",
-        youReady:
+        tutorial2:
+          "Primeiro, escolha as causas que mais despertam seu interesse. Assim, será possível encontrar iniciativas que têm tudo a ver com você.",
+        how: "COMO?",
+        tutorial3:
+          "Encontrou um projeto incrível? Match perfeito com suas habilidades? Se inscreva, e aguarde: a instituição entrará em contato com você.",
+        itsThis: "É ESSE!",
+        tutorial4:
           "Você está pronto para transformar o mundo em um lugar melhor?",
+        next: "Próximo",
         begin: "Começar",
+        //
         signIn: "ENTRAR",
         signInGoogle: "Conectar com Google",
         signInFacebook: "Conectar com Facebook",

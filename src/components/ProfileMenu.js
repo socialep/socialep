@@ -43,7 +43,10 @@ const ProfileMenu = (props) => {
       <List style={styles.list}>
         <ListItem
           text={strings.howItWorks}
-          onPress={() => {}}
+          onPress={() => {
+            onClose();
+            navigation.push("Tutorial");
+          }}
           icon={<Icon name="help" color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}

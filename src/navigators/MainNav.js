@@ -8,6 +8,7 @@ import register from "../screens/register";
 import thanksForRegister from "../screens/thanksForRegister";
 import organization from "../screens/organization";
 import editProfile from "../screens/editProfile";
+import tutorial from "../screens/tutorial";
 
 //navigators
 import TabNav from "./TabNav";
@@ -45,6 +46,11 @@ export default MainNav = () => {
       <MainStack.Screen
         name="EditProfile"
         component={editProfile}
+        options={defaultScreenOpts}
+      />
+      <MainStack.Screen
+        name="Tutorial"
+        component={tutorial}
         options={defaultScreenOpts}
       />
     </MainStack.Navigator>

@@ -1,6 +1,9 @@
 export const colorPrimary = "#6C63FF";
 export const colorPrimaryDarker = "#5650CC";
 
+//default colors
+export const colorWhite = "#FFFFFF";
+
 //backgrounds
 export const colorCarousel = "#CBCBCB";
 export const colorSignInHeader = "#404040";
