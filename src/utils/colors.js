@@ -9,6 +9,7 @@ export const colorCarousel = "#CBCBCB";
 export const colorSignInHeader = "#404040";
 export const colorLightGrayBg = "#F8F8F8";
 export const colorInterestCardBg = "#FFFFFF";
+export const colorLanguageBg = "#DDDDDD";
 
 //fonts
 export const fontColor = "#707070";

@@ -148,7 +148,9 @@ const index = (props) => {
         {user.languages.length > 0 && (
           <View style={styles.sectionContainer}>
             <Text style={styles.lblSection}>{strings.languages}</Text>
-            <Text style={styles.lbl}>{user.languages}</Text>
+            <Text style={styles.lbl}>
+              {user.languages.toString().replace(",", ", ")}
+            </Text>
           </View>
         )}
         {user.institution !== "" && (

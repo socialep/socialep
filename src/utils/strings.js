@@ -98,6 +98,7 @@ export default strings = (language) => {
         institution: "Instituição de ensino",
         course: "Curso",
         editPhoto: "Trocar foto",
+        addNewLanguage: "Adicionar novo idioma",
         //
         typeSomething: "Digite algo",
       };

@@ -4,6 +4,8 @@ import {
   colorInterestCardBg,
   colorLightGrayBg,
   colorPrimary,
+  colorLanguageBg,
+  fontColor,
 } from "../../utils/colors";
 
 export default styles = StyleSheet.create({
@@ -30,8 +32,8 @@ export default styles = StyleSheet.create({
     padding: 20,
   },
   profileIcon: {
-    width: 70,
-    height: 70,
+    width: 50,
+    height: 50,
   },
   lblTitle: {
     fontSize: 36,
@@ -46,14 +48,19 @@ export default styles = StyleSheet.create({
     marginBottom: 10,
   },
   userImg: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
     borderRadius: 100,
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   imgUser: {
     alignSelf: "center",
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     marginTop: 20,
     borderRadius: 100,
     borderWidth: 3,
@@ -74,5 +81,19 @@ export default styles = StyleSheet.create({
     color: colorFocused,
     marginTop: 10,
     marginBottom: 20,
+  },
+  languageContainer: {
+    flexDirection: "row",
+    paddingLeft: 6,
+    padding: 4,
+    backgroundColor: colorLanguageBg,
+    alignItems: "center",
+    borderRadius: 10,
+    marginLeft: 10,
+  },
+  lblLanguage: {
+    color: fontColor,
+    fontSize: 17,
+    marginRight: 4,
   },
 });

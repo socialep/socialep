@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 10,
   },
-  textInput: {
-    flex: 1,
-    fontSize: 17,
+  content: {
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
     borderRadius: 6,
     paddingHorizontal: 10,
@@ -21,9 +21,12 @@ const styles = StyleSheet.create({
     borderColor: "#DDDDDD",
     backgroundColor: "#FFFFFF",
   },
+  textInput: {
+    flex: 7,
+    fontSize: 17,
+  },
   actionButton: {
-    right: 10,
-    bottom: 6,
+    flex: 1,
   },
   errorLabel: {
     marginTop: 2,
@@ -57,83 +60,85 @@ const MyTextInput = (props) => {
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
-      {type === "phone" ? (
-        <TextInputMask
-          type="cel-phone"
-          options={{
-            maskType: "BRL",
-            withDDD: true,
-            dddMask: "(99) ",
-          }}
-          style={styles.textInput}
-          value={value}
-          onChangeText={(text) => onValueChange(text)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyboardType ? keyboardType : "default"}
-        />
-      ) : type === "cpf" ? (
-        <TextInputMask
-          type="cpf"
-          style={styles.textInput}
-          value={value}
-          onChangeText={(text) => onValueChange(text)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyboardType ? keyboardType : "default"}
-        />
-      ) : type === "cep" ? (
-        <TextInputMask
-          type="zip-code"
-          style={styles.textInput}
-          value={value}
-          onChangeText={(text) => onValueChange(text)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyboardType ? keyboardType : "default"}
-        />
-      ) : type === "date" ? (
-        <TextInputMask
-          type="datetime"
-          style={styles.textInput}
-          value={value}
-          onChangeText={(text) => onValueChange(text)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyboardType ? keyboardType : "default"}
-        />
-      ) : (
-        <TextInput
-          style={styles.textInput}
-          value={value}
-          onChangeText={(text) => onValueChange(text)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyboardType ? keyboardType : "default"}
-          secureTextEntry={secureTextEntry ? secureTextEntry : false}
-        />
-      )}
-      {action ? (
-        <IconButton
-          style={styles.actionButton}
-          onPress={onAction}
-          name={action}
-          size={24}
-          color={"#6e6e6e"}
-        />
-      ) : (
-        <View />
-      )}
+      <View style={styles.content}>
+        {type === "phone" ? (
+          <TextInputMask
+            type="cel-phone"
+            options={{
+              maskType: "BRL",
+              withDDD: true,
+              dddMask: "(99) ",
+            }}
+            style={styles.textInput}
+            value={value}
+            onChangeText={(text) => onValueChange(text)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType ? keyboardType : "default"}
+          />
+        ) : type === "cpf" ? (
+          <TextInputMask
+            type="cpf"
+            style={styles.textInput}
+            value={value}
+            onChangeText={(text) => onValueChange(text)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType ? keyboardType : "default"}
+          />
+        ) : type === "cep" ? (
+          <TextInputMask
+            type="zip-code"
+            style={styles.textInput}
+            value={value}
+            onChangeText={(text) => onValueChange(text)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType ? keyboardType : "default"}
+          />
+        ) : type === "date" ? (
+          <TextInputMask
+            type="datetime"
+            style={styles.textInput}
+            value={value}
+            onChangeText={(text) => onValueChange(text)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType ? keyboardType : "default"}
+          />
+        ) : (
+          <TextInput
+            style={styles.textInput}
+            value={value}
+            onChangeText={(text) => onValueChange(text)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            placeholder={placeholder}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType ? keyboardType : "default"}
+            secureTextEntry={secureTextEntry ? secureTextEntry : false}
+          />
+        )}
+        {action ? (
+          <IconButton
+            style={styles.actionButton}
+            onPress={onAction}
+            name={action}
+            size={24}
+            color={"#6e6e6e"}
+          />
+        ) : (
+          <View />
+        )}
+      </View>
       {error && <Text style={styles.errorLabel}>{error}</Text>}
     </View>
   );
