@@ -19,7 +19,18 @@ export const getOpps = (interests) => async (dispatch) => {
   dispatch({ type: TOGGLE_LOADING });
   try {
     const { data } = await axiosInstance.post("/getOpps", { interests });
-    dispatch({ type: SET_OPPS, payload: data });
+    const aux = [];
+    data.map((item) => {
+      if (aux.length == 0) aux.push(item);
+      else {
+        let includes = false;
+        aux.map((auxItem) => {
+          if (auxItem.id === item.id) includes = true;
+        });
+        if (!includes) aux.push(item);
+      }
+    });
+    dispatch({ type: SET_OPPS, payload: aux });
     dispatch({ type: TOGGLE_LOADING });
   } catch (err) {
     console.log(err);
