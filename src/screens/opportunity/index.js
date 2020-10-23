@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { View, ScrollView, Text, Image } from "react-native";
 import { IconButton, Icon, Button } from "material-bread";
 import { SliderBox } from "react-native-image-slider-box";
-import SvgUri from "react-native-svg-uri-reborn";
+
+//Assets
+import calendar from "../../assets/calendar.png";
+import clock from "../../assets/clock.png";
 
 //Utils
 import styles from "./styles";
@@ -17,22 +20,13 @@ import {
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";
+import InterestsSection from "../../components/InterestsSection";
 
 //Redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { uploadFavOpps, setOpp } from "../../redux/actions/uiActions";
 import { cancelRegistration } from "../../redux/actions/userActions";
-
-//Assets
-import animal from "../../assets/interests/animal.svg";
-import hand from "../../assets/interests/hand.svg";
-import ball from "../../assets/interests/ball.svg";
-import leaf from "../../assets/interests/leaf.svg";
-import pills from "../../assets/interests/pills.svg";
-import gradHat from "../../assets/interests/gradHat.svg";
-import calendar from "../../assets/calendar.png";
-import clock from "../../assets/clock.png";
 
 const index = (props) => {
   const {
@@ -123,75 +117,7 @@ const index = (props) => {
         />
         <Text style={styles.lblName}>{name}</Text>
         <Text style={styles.lblDes}>{description}</Text>
-        <View style={styles.interestsContainer}>
-          <Text style={styles.lblName}>{strings.interests}</Text>
-          {interests.animals && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={animal}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.animals}</Text>
-            </View>
-          )}
-          {interests.education && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={gradHat}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.education}</Text>
-            </View>
-          )}
-          {interests.environment && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={leaf}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.environment}</Text>
-            </View>
-          )}
-          {interests.health && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={pills}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.health}</Text>
-            </View>
-          )}
-          {interests.human_rights && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={hand}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.humanRights}</Text>
-            </View>
-          )}
-          {interests.sports && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={ball}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.sports}</Text>
-            </View>
-          )}
-        </View>
+        <InterestsSection strings={strings} interests={interests} />
         <View style={styles.requirementsContainer}>
           <Text style={styles.lblName}>{strings.requirements}</Text>
           <Text style={styles.lblDes}>{requirements}</Text>

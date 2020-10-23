@@ -1,23 +1,15 @@
 import React, { useState } from "react";
 import { View, Image, Text, ScrollView } from "react-native";
 import { Avatar, Divider } from "material-bread";
-import SvgUri from "react-native-svg-uri-reborn";
-
-//Assets
-import animal from "../../assets/interests/animal.svg";
-import hand from "../../assets/interests/hand.svg";
-import ball from "../../assets/interests/ball.svg";
-import leaf from "../../assets/interests/leaf.svg";
-import pills from "../../assets/interests/pills.svg";
-import gradHat from "../../assets/interests/gradHat.svg";
 
 //Components
 import CustomAppBar from "../../components/CustomAppBar";
 import ProfileMenu from "../../components/ProfileMenu";
+import InterestsSection from "../../components/InterestsSection";
 
 //Util
 import styles from "./styles";
-import { colorPrimary, colorUnselected } from "../../utils/colors";
+import { colorPrimary } from "../../utils/colors";
 
 //Redux
 import PropTypes from "prop-types";
@@ -75,75 +67,8 @@ const index = (props) => {
             <Text style={styles.lblPresentation}>{user.presentation}</Text>
           </View>
         )}
-        <View style={styles.interestsContainer}>
-          <Text style={styles.lblSection}>{strings.interests}</Text>
-          {user.interests.animals && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={animal}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.animals}</Text>
-            </View>
-          )}
-          {user.interests.education && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={gradHat}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.education}</Text>
-            </View>
-          )}
-          {user.interests.environment && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={leaf}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.environment}</Text>
-            </View>
-          )}
-          {user.interests.health && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={pills}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.health}</Text>
-            </View>
-          )}
-          {user.interests.human_rights && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={hand}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.humanRights}</Text>
-            </View>
-          )}
-          {user.interests.sports && (
-            <View style={styles.iconContainer}>
-              <SvgUri
-                width={40}
-                height={40}
-                source={ball}
-                fill={colorUnselected}
-              />
-              <Text style={styles.lblInterest}>{strings.sports}</Text>
-            </View>
-          )}
-        </View>
+
+        <InterestsSection strings={strings} interests={user.interests} />
 
         {user.languages.length > 0 && (
           <View style={styles.sectionContainer}>

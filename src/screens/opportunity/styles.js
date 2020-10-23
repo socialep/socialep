@@ -39,7 +39,7 @@ export default styles = StyleSheet.create({
   lblName: {
     fontSize: 30,
     fontWeight: "100",
-    color: colorSignInHeader,
+    color: fontColor,
     textAlign: "center",
     width: "100%",
   },
@@ -50,26 +50,7 @@ export default styles = StyleSheet.create({
     marginTop: 5,
     width: Dimensions.get("window").width / 1.2,
     alignSelf: "center",
-  },
-  interestsContainer: {
-    marginTop: 16,
-    backgroundColor: colorLightGrayBg,
-    padding: 10,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  iconContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 12,
-    width: "50%",
-  },
-  lblInterest: {
-    fontSize: 15,
-    color: fontColor,
-    textAlign: "center",
-    flex: 1,
+    marginBottom: 10,
   },
   requirementsContainer: {
     marginVertical: 10,

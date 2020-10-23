@@ -48,26 +48,6 @@ export default styles = StyleSheet.create({
     fontSize: 15,
     color: colorUnselected,
   },
-  interestsContainer: {
-    backgroundColor: colorLightGrayBg,
-    padding: 10,
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  iconContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 12,
-    width: "50%",
-    paddingHorizontal: 6,
-  },
-  lblInterest: {
-    fontSize: 15,
-    color: fontColor,
-    textAlign: "center",
-    flex: 1,
-  },
   lblSection: {
     fontSize: 29,
     color: fontColor,
