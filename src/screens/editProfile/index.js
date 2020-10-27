@@ -9,7 +9,6 @@ import profileIcon from "../../assets/profileIcon.png";
 //Components
 import TextInput from "../../components/TextInput";
 import MultilineTextField from "../../components/MultilineTextField";
-import Picker from "../../components/Picker";
 
 //Util
 import styles from "./styles";
@@ -33,7 +32,7 @@ const index = (props) => {
     editProfile,
   } = props;
 
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
   const [photoChanged, setPhotoChanged] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({

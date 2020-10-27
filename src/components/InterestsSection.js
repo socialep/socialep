@@ -111,7 +111,7 @@ export default InterestsSections = (props) => {
             source={masks}
             fill={colorUnselected}
           />
-          <Text style={styles.lblInterest}>{strings.sports}</Text>
+          <Text style={styles.lblInterest}>{strings.arts}</Text>
         </View>
       )}
       {interests.others && (
@@ -122,7 +122,7 @@ export default InterestsSections = (props) => {
             source={others}
             fill={colorUnselected}
           />
-          <Text style={styles.lblInterest}>{strings.sports}</Text>
+          <Text style={styles.lblInterest}>{strings.others}</Text>
         </View>
       )}
     </View>

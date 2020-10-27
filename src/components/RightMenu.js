@@ -187,6 +187,36 @@ const RightMenu = (props) => {
             style={styles.listItemStyle}
             textStyle={styles.lblItem}
           />
+          <ListItem
+            text={strings.arts}
+            onPress={() => {}}
+            icon={
+              <Checkbox
+                size={24}
+                checkboxColor={colorSelected}
+                checked={filter.interests.arts}
+                onPress={() => handleInterests("arts", !filter.interests.arts)}
+              />
+            }
+            style={styles.listItemStyle}
+            textStyle={styles.lblItem}
+          />
+          <ListItem
+            text={strings.others}
+            onPress={() => {}}
+            icon={
+              <Checkbox
+                size={24}
+                checkboxColor={colorSelected}
+                checked={filter.interests.others}
+                onPress={() =>
+                  handleInterests("others", !filter.interests.others)
+                }
+              />
+            }
+            style={styles.listItemStyle}
+            textStyle={styles.lblItem}
+          />
         </List>
       </View>
 

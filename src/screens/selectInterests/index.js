@@ -15,6 +15,8 @@ import ball from "../../assets/interests/ball.svg";
 import leaf from "../../assets/interests/leaf.svg";
 import pills from "../../assets/interests/pills.svg";
 import gradHat from "../../assets/interests/gradHat.svg";
+import masks from "../../assets/interests/masks.svg";
+import others from "../../assets/interests/others.svg";
 
 //Util
 import styles from "./styles";
@@ -31,6 +33,8 @@ const index = (props) => {
     environment: false,
     health: false,
     education: false,
+    arts: false,
+    others: false,
   });
 
   const [error, setError] = useState(null);
@@ -55,7 +59,9 @@ const index = (props) => {
       !interests.sports &&
       !interests.environment &&
       !interests.health &&
-      !interests.education
+      !interests.education &&
+      !interests.arts &&
+      !interests.others
     )
       return setError(strings.mustChooseAtLeastOne);
 
@@ -106,6 +112,18 @@ const index = (props) => {
           icon={gradHat}
           label={strings.education}
           selected={interests.education}
+        />
+        <InterestCard
+          onPress={(selected) => handleToggle("arts", selected)}
+          icon={masks}
+          label={strings.arts}
+          selected={interests.arts}
+        />
+        <InterestCard
+          onPress={(selected) => handleToggle("others", selected)}
+          icon={others}
+          label={strings.others}
+          selected={interests.others}
         />
       </View>
       {error && <Text style={styles.lblError}>{error}</Text>}

@@ -27,6 +27,8 @@ const initialState = {
       health: true,
       human_rights: true,
       sports: true,
+      arts: true,
+      others: true,
     },
     modalities: {
       remote: true,

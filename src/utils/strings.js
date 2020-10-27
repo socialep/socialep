@@ -32,6 +32,8 @@ export default strings = (language) => {
         humanRights: "Direitos Humanos",
         animals: "Animais",
         health: "Saúde",
+        arts: "Artes",
+        others: "Outros",
         howYWHelp: "Quais causas você quer ajudar?",
         //
         continue: "Continuar",
