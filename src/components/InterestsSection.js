@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     color: fontColor,
     textAlign: "center",
     flex: 1,
+    fontFamily: "Segoe-UI",
   },
   lblSection: {
     fontSize: 29,
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "100",
     marginBottom: 10,
+    fontFamily: "Segoe-UI",
   },
 });
 

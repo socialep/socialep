@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: fontColor,
     textAlign: "center",
+    fontFamily: "Segoe-UI",
   },
   list: {
     backgroundColor: colorLightGrayBg,
@@ -31,12 +32,14 @@ const styles = StyleSheet.create({
     color: colorFocused,
     fontSize: 16,
     fontWeight: "500",
+    fontFamily: "Segoe-UI",
   },
   lblSubHeader: {
     color: fontColor,
     fontSize: 20,
     marginTop: 10,
     marginLeft: 10,
+    fontFamily: "Segoe-UI",
   },
 });
 

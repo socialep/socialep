@@ -5,7 +5,7 @@ import SvgUri from "react-native-svg-uri-reborn";
 import {
   colorSelected,
   colorUnselected,
-  colorInterestCardBg
+  colorInterestCardBg,
 } from "../utils/colors";
 
 const iconSize = Dimensions.get("window").width / 7;
@@ -20,16 +20,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 10,
     marginTop: 20,
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly",
   },
   label: {
     fontSize: 23,
     fontWeight: "500",
-    textAlign: "center"
-  }
+    textAlign: "center",
+    fontFamily: "Segoe-UI",
+  },
 });
 
-const InterestCard = props => {
+const InterestCard = (props) => {
   const [selected, toggleSelected] = useState(props.selected);
   const { label, icon } = props;
 
@@ -48,7 +49,7 @@ const InterestCard = props => {
       <Text
         style={{
           ...styles.label,
-          color: selected ? colorSelected : colorUnselected
+          color: selected ? colorSelected : colorUnselected,
         }}
       >
         {label}

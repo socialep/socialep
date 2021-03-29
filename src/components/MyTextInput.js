@@ -8,7 +8,7 @@ import { colorPrimary } from "../util/colors";
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width / 1.4,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   unFocused: {
     height: 40,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     borderBottomWidth: 0.5,
     flexWrap: "wrap",
-    marginTop: 24
+    marginTop: 24,
   },
   focused: {
     height: 40,
@@ -25,32 +25,34 @@ const styles = StyleSheet.create({
     borderBottomColor: colorPrimary,
     borderBottomWidth: 2,
     flexWrap: "wrap",
-    marginTop: 24
+    marginTop: 24,
   },
   icon: {
     position: "absolute",
     bottom: 8,
-    left: 10
+    left: 10,
   },
   textInput: {
     position: "absolute",
     left: 44,
     bottom: 10,
     fontSize: 17,
-    width: Dimensions.get("window").width / 1.4 - 84
+    width: Dimensions.get("window").width / 1.4 - 84,
+    fontFamily: "Segoe-UI",
   },
   actionButton: {
     position: "absolute",
     right: 10,
-    bottom: 6
+    bottom: 6,
   },
   errorLabel: {
     marginTop: 2,
-    color: "red"
-  }
+    color: "red",
+    fontFamily: "Segoe-UI",
+  },
 });
 
-const MyTextInput = props => {
+const MyTextInput = (props) => {
   const [focus, setFocus] = useState(false);
   return (
     <View style={styles.container}>
@@ -64,7 +66,7 @@ const MyTextInput = props => {
         <TextInput
           style={styles.textInput}
           value={props.value}
-          onChangeText={text => props.onValueChange(text)}
+          onChangeText={(text) => props.onValueChange(text)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           placeholder={props.placeholder}

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colorFocused,
     fontWeight: "500",
+    fontFamily: "Segoe-UI",
   },
   rightView: {
     padding: 10,
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "200",
     marginLeft: 8,
+    fontFamily: "Segoe-UI",
   },
   ratingView: {
     flexDirection: "row",
@@ -63,7 +65,7 @@ export default OpportunityListItem = (props) => {
         <Text style={styles.lblName}>{name}</Text>
         <View style={styles.horizontalView}>
           <View style={styles.ratingView}>
-            <Icon size={33} name="star" color={colorStar} />
+            <Icon size={33} name='star' color={colorStar} />
             <Text style={styles.lblRating}>{rating}</Text>
           </View>
           <IconButton

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 7,
     fontSize: 17,
+    fontFamily: "Segoe-UI",
   },
   actionButton: {
     flex: 1,
@@ -31,12 +32,14 @@ const styles = StyleSheet.create({
   errorLabel: {
     marginTop: 2,
     color: "red",
+    fontFamily: "Segoe-UI",
   },
   label: {
     fontSize: 14,
     marginLeft: 10,
     marginBottom: 5,
     color: colorFocused,
+    fontFamily: "Segoe-UI",
   },
 });
 

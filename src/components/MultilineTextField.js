@@ -17,15 +17,18 @@ const styles = StyleSheet.create({
     fontSize: 17,
     padding: 10,
     alignItems: "flex-start",
+    fontFamily: "Segoe-UI",
   },
   errorLabel: {
     marginTop: 2,
     color: "red",
+    fontFamily: "Segoe-UI",
   },
   lblCharCount: {
     alignSelf: "flex-end",
     marginTop: 6,
     color: "#727272",
+    fontFamily: "Segoe-UI",
   },
 });
 
@@ -53,7 +56,7 @@ const MultilineTextInput = (props) => {
           keyboardType={keyboardType ? keyboardType : "default"}
           multiline
           numberOfLines={6}
-          textAlignVertical="top"
+          textAlignVertical='top'
         />
       </View>
       <Text style={styles.lblCharCount}>{value.length}/280</Text>

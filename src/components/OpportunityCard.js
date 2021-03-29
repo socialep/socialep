@@ -40,17 +40,20 @@ const styles = StyleSheet.create({
     fontWeight: "100",
     color: colorSignInHeader,
     textAlign: "center",
+    fontFamily: "Segoe-UI",
   },
   lblDes: {
     fontSize: 19,
     color: fontColor,
     textAlign: "center",
     marginVertical: 5,
+    fontFamily: "Segoe-UI",
   },
   lblRating: {
     fontSize: 18,
     fontWeight: "200",
     marginLeft: 8,
+    fontFamily: "Segoe-UI",
   },
   btnSubscribe: {
     marginVertical: 16,
@@ -58,6 +61,7 @@ const styles = StyleSheet.create({
   btnSubscribeInside: {
     width: Dimensions.get("window").width / 1.8,
     borderRadius: 10,
+    fontFamily: "Segoe-UI",
   },
 });
 
@@ -76,7 +80,7 @@ const OpportunityCard = (props) => {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.ratingContainer}>
-          <Icon size={33} name="star" color={colorStar} />
+          <Icon size={33} name='star' color={colorStar} />
           <Text style={styles.lblRating}>{rating}</Text>
         </View>
         <IconButton
@@ -90,7 +94,7 @@ const OpportunityCard = (props) => {
       <Text style={styles.lblName}>{name}</Text>
       <Text style={styles.lblDes}>{description}</Text>
       <Button
-        type="contained"
+        type='contained'
         color={colorPrimary}
         text={strings.seeMore}
         onPress={() => props.btnPressed()}

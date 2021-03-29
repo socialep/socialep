@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     color: colorFocused,
     fontSize: 16,
     fontWeight: "500",
+    fontFamily: "Segoe-UI",
   },
 });
 

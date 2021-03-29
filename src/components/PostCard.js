@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     color: colorSignInHeader,
     fontSize: 14,
     fontWeight: "700",
+    fontFamily: "Segoe-UI",
   },
   image: {
     width: "100%",
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     color: colorFocused,
     fontSize: 15,
+    fontFamily: "Segoe-UI",
   },
 });
 
@@ -65,7 +67,7 @@ const PostCard = (props) => {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <Avatar
-          type="image"
+          type='image'
           size={50}
           image={<Image source={{ uri: orgLogo }} />}
           onPress={() => onPress(orgId)}
@@ -78,12 +80,12 @@ const PostCard = (props) => {
       <Image
         source={{ uri: image }}
         style={styles.image}
-        resizeMode="cover"
+        resizeMode='cover'
         on
       />
       <View style={styles.likesView}>
         <IconButton
-          name="thumb-up"
+          name='thumb-up'
           size={36}
           color={likes.includes(user.id) ? colorPrimary : colorUnselected}
           onPress={() => likePost(user.id, id)}

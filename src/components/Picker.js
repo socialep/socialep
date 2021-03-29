@@ -37,10 +37,12 @@ const styles = StyleSheet.create({
     borderColor: colorMainFont,
     fontSize: 17,
     height: "100%",
+    fontFamily: "Segoe-UI",
   },
   errorLabel: {
     marginTop: 2,
     color: "red",
+    fontFamily: "Segoe-UI",
   },
 });
 
@@ -57,7 +59,7 @@ export default CustomPicker = (props) => {
           style={styles.piker}
           itemStyle={styles.item}
           onValueChange={(value, index) => onChange(value)}
-          mode="dropdown"
+          mode='dropdown'
         >
           {list.map((item, index) => (
             <Picker.Item key={index} label={item.label} value={item.value} />
