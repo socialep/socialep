@@ -41,6 +41,7 @@ export default strings = (language) => {
         mustChooseAtLeastOne: "Você precisa escolher ao menos um interesse",
         mustNotBeEmpty: "O campo precisa ser preenchido",
         //
+        seeMore: "Ver Oportunidade",
         wantToSubscribe: "Quero me inscrever",
         cancelRegister: "Cancelar Inscrição",
         //
@@ -87,6 +88,7 @@ export default strings = (language) => {
         email: "Email",
         name: "Nome",
         gender: "Gênero",
+        genderHelp: "Gênero com qual se identifica",
         nationality: "Nacionalidade",
         bornDay: "Data de nascimento",
         presentation: "Apresentação",

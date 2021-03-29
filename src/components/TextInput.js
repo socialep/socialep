@@ -53,6 +53,7 @@ const MyTextInput = (props) => {
     keyboardType,
     secureTextEntry,
     label,
+    helperText,
   } = props;
 
   const [focus, setFocus] = useState(false);
@@ -63,7 +64,7 @@ const MyTextInput = (props) => {
       <View style={styles.content}>
         {type === "phone" ? (
           <TextInputMask
-            type="cel-phone"
+            type='cel-phone'
             options={{
               maskType: "BRL",
               withDDD: true,
@@ -80,7 +81,7 @@ const MyTextInput = (props) => {
           />
         ) : type === "cpf" ? (
           <TextInputMask
-            type="cpf"
+            type='cpf'
             style={styles.textInput}
             value={value}
             onChangeText={(text) => onValueChange(text)}
@@ -92,7 +93,7 @@ const MyTextInput = (props) => {
           />
         ) : type === "cep" ? (
           <TextInputMask
-            type="zip-code"
+            type='zip-code'
             style={styles.textInput}
             value={value}
             onChangeText={(text) => onValueChange(text)}
@@ -104,10 +105,12 @@ const MyTextInput = (props) => {
           />
         ) : type === "date" ? (
           <TextInputMask
-            type="datetime"
+            type='datetime'
             style={styles.textInput}
             value={value}
-            onChangeText={(text) => onValueChange(text)}
+            onChangeText={(text) =>
+              text.length <= 10 ? onValueChange(text) : {}
+            }
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             placeholder={placeholder}
@@ -139,6 +142,7 @@ const MyTextInput = (props) => {
           <View />
         )}
       </View>
+      {helperText && <Text style={styles.label}>{helperText}</Text>}
       {error && <Text style={styles.errorLabel}>{error}</Text>}
     </View>
   );

@@ -92,7 +92,7 @@ const OpportunityCard = (props) => {
       <Button
         type="contained"
         color={colorPrimary}
-        text={strings.wantToSubscribe}
+        text={strings.seeMore}
         onPress={() => props.btnPressed()}
         containerStyle={styles.btnSubscribe}
         style={styles.btnSubscribeInside}

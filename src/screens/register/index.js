@@ -71,7 +71,7 @@ const index = (props) => {
 
   return (
     <View style={styles.container}>
-      <CustomAppBar mode="arrow-back" onNavigation={() => navigation.pop()} />
+      <CustomAppBar mode='arrow-back' onNavigation={() => navigation.pop()} />
       <ScrollView style={styles.scrollView}>
         <Text style={styles.lblHeader}>{oppName}</Text>
         <View style={styles.askContainer}>
@@ -79,12 +79,12 @@ const index = (props) => {
           <MultilineTextField
             value={form.disponibility}
             onValueChange={(value) => handleChange("disponibility", value)}
-            autoCapitalize="sentences"
+            autoCapitalize='sentences'
             error={errors.disponibility ? errors.disponibility : null}
             placeholder={strings.typeSomething}
           />
         </View>
-        <View style={styles.askContainer}>
+        {/* <View style={styles.askContainer}>
           <Text style={styles.lblAsk}>{strings.experience}</Text>
           <TextInput
             value={form.experience}
@@ -92,19 +92,20 @@ const index = (props) => {
             //label={strings.experienceLabel}
             error={errors.experience ? errors.experience : null}
           />
-        </View>
+        </View> */}
         <View style={styles.askContainer}>
           <Text style={styles.lblAsk}>{strings.presentationLetter}</Text>
-          <TextInput
+          <MultilineTextField
             value={form.presentation}
             onValueChange={(value) => handleChange("presentation", value)}
-            //label={strings.presentationLabel}
+            autoCapitalize='sentences'
             error={errors.presentation ? errors.presentation : null}
+            placeholder={strings.typeSomething}
           />
         </View>
         <View style={styles.horizontalContainer}>
           <Button
-            type="outlined"
+            type='outlined'
             textColor={colorSignInGoogle}
             text={strings.cancel}
             onPress={() => navigation.pop()}
@@ -113,7 +114,7 @@ const index = (props) => {
             disabled={loading}
           />
           <Button
-            type="contained"
+            type='contained'
             color={colorPrimary}
             text={strings.register}
             onPress={() => handleSubmit()}

@@ -181,7 +181,7 @@ const index = (props) => {
       <View style={styles.buttonsContainer}>
         <Button
           text={strings.backToProfile}
-          type="outlined"
+          type='outlined'
           textColor={colorUnselected}
           containerStyle={{ width: 200 }}
           disabled={loading}
@@ -189,7 +189,7 @@ const index = (props) => {
         />
         <Button
           text={strings.save}
-          type="contained"
+          type='contained'
           color={colorPrimary}
           containerStyle={{ width: 200 }}
           disabled={loading || !form.changes}
@@ -200,7 +200,7 @@ const index = (props) => {
       <ScrollView style={styles.content}>
         <View style={styles.headerView}>
           <IconButton
-            name="chevron-left"
+            name='chevron-left'
             size={34}
             color={colorCarousel}
             onPress={() => handlepage(-1)}
@@ -208,10 +208,10 @@ const index = (props) => {
           <Image
             source={profileIcon}
             style={styles.profileIcon}
-            resizeMode="contain"
+            resizeMode='contain'
           />
           <IconButton
-            name="chevron-right"
+            name='chevron-right'
             size={34}
             color={colorCarousel}
             onPress={() => handlepage(1)}
@@ -230,7 +230,7 @@ const index = (props) => {
               <Image source={{ uri: form.photo.uri }} style={styles.imgUser} />
               <View style={styles.buttonContainer}>
                 <Button
-                  type="outlined"
+                  type='outlined'
                   textColor={colorSelected}
                   text={strings.changePhoto}
                   borderSize={2}
@@ -243,7 +243,7 @@ const index = (props) => {
                 value={form.name}
                 onValueChange={(value) => handleChange("name", value)}
                 label={strings.name}
-                autoCapitalize="words"
+                autoCapitalize='words'
                 error={errors.name ? errors.name : null}
               />
             </View>
@@ -253,7 +253,7 @@ const index = (props) => {
                 onValueChange={(value) => handleChange("email", value)}
                 label={strings.email}
                 error={errors.email ? errors.email : null}
-                keyboardType="email-address"
+                keyboardType='email-address'
               />
             </View>
           </View>
@@ -266,6 +266,7 @@ const index = (props) => {
                 onValueChange={(value) => handleChange("gender", value)}
                 label={strings.gender}
                 error={errors.gender ? errors.gender : null}
+                helperText={strings.genderHelp}
               />
             </View>
             <View style={styles.sectionContaienr}>
@@ -282,8 +283,8 @@ const index = (props) => {
                 onValueChange={(value) => handleChange("bornDay", value)}
                 label={strings.bornDay}
                 error={errors.bornDay ? errors.bornDay : null}
-                type="date"
-                keyboardType="numeric"
+                type='date'
+                keyboardType='numeric'
               />
             </View>
           </View>
@@ -295,7 +296,7 @@ const index = (props) => {
               <MultilineTextField
                 value={form.presentation}
                 onValueChange={(value) => handleChange("presentation", value)}
-                autoCapitalize="sentences"
+                autoCapitalize='sentences'
                 error={errors.presentation ? errors.presentation : null}
                 placeholder={strings.typeSomething}
               />
@@ -307,9 +308,9 @@ const index = (props) => {
                 onValueChange={(value) => handleChange("language", value)}
                 label={strings.language}
                 error={errors.language ? errors.language : null}
-                autoCapitalize="words"
+                autoCapitalize='words'
                 placeholder={strings.addNewLanguage}
-                action="add"
+                action='add'
                 onAction={() => addLanguage(form.language)}
               />
               <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
@@ -318,8 +319,8 @@ const index = (props) => {
                     <Text style={styles.lblLanguage}>{language}</Text>
                     <IconButton
                       size={16}
-                      name="close"
-                      color="red"
+                      name='close'
+                      color='red'
                       onPress={() => remLanguage(language)}
                     />
                   </View>

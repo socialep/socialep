@@ -69,9 +69,9 @@ export default styles = StyleSheet.create({
     color: fontColor,
     textAlign: "center",
   },
-  lblPresentation:{
+  lblPresentation: {
     fontSize: 20,
     color: fontColor,
     textAlign: "center",
-  }
+  },
 });

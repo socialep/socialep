@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Linking } from "react-native";
 import { SheetSide, List, ListItem, Icon, Divider } from "material-bread";
 
 import {
@@ -47,14 +47,14 @@ const ProfileMenu = (props) => {
             onClose();
             navigation.push("Tutorial");
           }}
-          icon={<Icon name="help" color={colorPrimary} size={24} />}
+          icon={<Icon name='help' color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}
         />
         <ListItem
           text={strings.terms}
-          onPress={() => {}}
-          icon={<Icon name="account-balance" color={colorPrimary} size={24} />}
+          onPress={() => Linking.openURL("https://socialep.github.io")}
+          icon={<Icon name='account-balance' color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}
         />
@@ -64,7 +64,7 @@ const ProfileMenu = (props) => {
             navigation.push("EditProfile");
             onClose();
           }}
-          icon={<Icon name="edit" color={colorPrimary} size={24} />}
+          icon={<Icon name='edit' color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}
         />
@@ -72,7 +72,7 @@ const ProfileMenu = (props) => {
         <ListItem
           text={strings.signOut}
           onPress={() => props.signOut()}
-          icon={<Icon name="exit-to-app" color={colorPrimary} size={24} />}
+          icon={<Icon name='exit-to-app' color={colorPrimary} size={24} />}
           style={styles.listItemStyle}
           textStyle={styles.lblItem}
         />
